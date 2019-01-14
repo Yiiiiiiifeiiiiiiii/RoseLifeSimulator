@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:scaleType="fitStart"
+               android:adjustViewBounds="true"
+               android:src="@drawable/people_background"
+               android:id="@+id/people_background"
+    />
+
+    <ImageView android:layout_width="120dp"
+               android:layout_height="120dp"
+               android:adjustViewBounds="true"
+               android:scaleType="fitStart"
+               android:layout_marginTop="10dp"
+               android:src="@drawable/DrBhead"
+               android:layout_marginLeft="50dp"
+               android:id="@+id/drB_head"
+               android:layout_below="@id/people_background"
+
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/dr_B_text"
+              android:textSize="20sp"
+              android:layout_below="@id/drB_head"
+              android:layout_alignLeft="@id/drB_head"
+              android:layout_marginLeft="10dp"
+              android:text="@string/dr_boutell"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/bsb_text"
+              android:layout_marginLeft="10dp"
+              android:layout_toRightOf="@id/bsb"
+              android:layout_alignBottom="@id/bsb"
+              android:textSize="20sp"
+              android:text="@string/bsb_hall"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="20sp"
+              android:layout_below="@id/girlfriend"
+              android:layout_alignRight="@id/girlfriend"
+              android:id="@+id/girlfriend_text"
+              android:text="@string/unknown"
+    />
+
+    <ImageView android:layout_width="120dp"
+               android:layout_height="120dp"
+               android:scaleType="fitEnd"
+               android:adjustViewBounds="true"
+
+               android:layout_marginTop="-5dp"
+               android:id="@+id/bsb"
+               android:src="@drawable/bsb"
+               android:layout_marginLeft="20dp"
+               android:layout_below="@id/drB_head"
+
+    />
+
+    <ImageView android:layout_width="120dp"
+               android:scaleType="fitStart"
+               android:layout_height="wrap_content"
+               android:adjustViewBounds="true"
+               android:layout_marginTop="50dp"
+               android:id="@+id/girlfriend"
+               android:src="@drawable/girlfriend"
+               android:layout_marginLeft="80dp"
+               android:layout_toRightOf="@+id/drB_head"
+               android:layout_below="@id/people_background"
+
+    />
+
+
+</RelativeLayout>

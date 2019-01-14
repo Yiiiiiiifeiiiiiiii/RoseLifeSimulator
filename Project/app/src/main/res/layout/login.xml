@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/roselife_simulator"
+              android:textSize="50sp"
+              android:textStyle="bold"
+              android:id="@+id/Title"
+              android:layout_marginTop="50dp"
+              android:layout_marginLeft="30dp"
+    />
+
+    <EditText android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/accountInput"
+              android:layout_marginTop="30dp"
+              android:layout_below="@id/Title"
+              android:layout_centerHorizontal="true"
+              android:hint="@string/account"
+    />
+
+    <EditText android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/passwordInput"
+              android:layout_below="@id/accountInput"
+              android:layout_centerHorizontal="true"
+              android:hint="@string/password"
+    />
+
+    <Button android:layout_width="wrap_content"
+            android:layout_below="@id/passwordInput"
+            android:text="@string/go"
+            android:id="@+id/StartButton"
+            android:layout_height="wrap_content" android:layout_marginTop="45dp" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_marginRight="26dp" android:layout_marginEnd="26dp"/>
+
+
+</RelativeLayout>
