@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ProjectFragment</string>
+    <string name="date">09.01.2019</string>
+    <string name="time">Morning</string>
+    <string name="week">Week 1</string>
+    <string name="health">Health : 100</string>
+    <string name="happiness">Happiness : 100</string>
+    <string name="GPA">GPA : 4.0</string>
+    <string name="actionPoint">Action Point : 20</string>
+
+    <string name="year">Year: 2019</string>
+    <string name="major">Major: CS</string>
+    <string name="playerName">Name: XXX</string>
+
+    <string name="hello_world">Hello World!</string>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/colorAccent"
+>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            tools:srcCompat="@drawable/campus"
+            android:layout_alignParentTop="true"
+            android:id="@+id/imageView"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="0dp" android:layout_alignParentStart="true"/>
+
+    <android.support.v7.widget.LinearLayoutCompat android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:background="@color/colorGray"
+                                                  android:layout_alignParentRight="true"
+            android:orientation="vertical"
+    >
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/year"
+        android:id="@+id/yearTextView"
+        />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/majorTextView"
+                  android:text="@string/major"
+        />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/nameTexgtView"
+                  android:text="@string/playerName"
+        />
+
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/dateText"
+            android:layout_below="@+id/imageView"
+            android:textSize="20dp"
+
+    />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/timeTextView"
+            android:layout_below="@+id/dateText"
+            android:textSize="20dp"
+
+    />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/week"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/weekNumberTextView"
+            android:layout_below="@+id/timeTextView"
+            android:textSize="20dp"
+
+    />
+    <Button android:layout_width="100dp" android:layout_height="50dp"
+            android:text="NEXT DAY"
+            android:layout_below="@id/weekNumberTextView"
+    />
+
+    <android.support.v7.widget.LinearLayoutCompat android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:orientation="vertical"
+                                                  android:layout_below="@+id/imageView"
+                                                  android:id="@+id/Buttons"
+
+
+                                                  android:layout_marginTop="-1dp" android:layout_alignParentEnd="true">
+        <Button android:layout_width="100dp" android:layout_height="50dp"
+                android:text="CLUB"
+        />
+        <Button android:layout_width="100dp" android:layout_height="50dp"
+                android:text="Class"
+        />
+        <Button android:layout_width="100dp" android:layout_height="50dp"
+                android:text="PEOPLE"
+        />
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_below="@+id/Buttons"
+                    android:background="@color/colorPrimaryDark"
+    >
+
+            <ImageView android:layout_width="100dp"
+                       android:layout_height="match_parent"
+                       tools:srcCompat="@drawable/character"
+
+                       android:id="@+id/CharacterImageView" android:scaleType="fitXY" android:adjustViewBounds="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_toRightOf="@+id/CharacterImageView"
+                android:id="@+id/statusTextView"
+                android:textSize="25dp"
+
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/health"
+                android:layout_toRightOf="@+id/CharacterImageView"
+                android:layout_below="@+id/statusTextView"
+                android:id="@+id/healthTextView"
+                android:textSize="20dp"
+
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/happiness"
+                android:layout_toRightOf="@+id/CharacterImageView"
+                android:layout_below="@+id/healthTextView"
+                android:id="@+id/happinessTextView"
+                android:textSize="20dp"
+
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/actionPoint"
+                android:layout_toRightOf="@+id/CharacterImageView"
+                android:layout_below="@+id/happinessTextView"
+                android:id="@+id/actionPointTextView"
+                android:textSize="20dp"
+
+        />
+        <Button
+                android:text="menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/button"/>
+
+    </RelativeLayout>
+</RelativeLayout>
