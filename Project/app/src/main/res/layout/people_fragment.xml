@@ -15,7 +15,7 @@
                android:adjustViewBounds="true"
                android:scaleType="fitStart"
                android:layout_marginTop="10dp"
-               android:src="@drawable/drbhead"
+               android:src="@drawable/dr_b_head"
                android:layout_marginLeft="50dp"
                android:id="@+id/drB_head"
                android:layout_below="@id/people_background"
