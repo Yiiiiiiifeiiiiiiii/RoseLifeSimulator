@@ -27,6 +27,11 @@
     <string name="bsb_hall">BSB Hall</string>
     <string name="unknown">Unknown???</string>
 
+
+    <!-- save string -->
+    <string name="save_time">12.17.2018 2:30</string>
+    <string name="save_slot_info_1">save slot 1: empty</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

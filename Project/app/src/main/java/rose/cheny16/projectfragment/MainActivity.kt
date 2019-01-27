@@ -2,9 +2,7 @@ package rose.cheny16.projectfragment
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,10 +39,10 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
                 true
             }
             R.id.action_saveload -> {
-                var ft = supportFragmentManager.beginTransaction()
-                ft.replace(R.id.fragment_container,fragment_saveload(),"login")
-                ft.addToBackStack("list")
-                ft.commit()
+                var saveloadFT = supportFragmentManager.beginTransaction()
+                saveloadFT.replace(R.id.fragment_container,fragment_saveload(),"login")
+                saveloadFT.addToBackStack("list")
+                saveloadFT.commit()
                 true
             }
             else -> super.onOptionsItemSelected(item)

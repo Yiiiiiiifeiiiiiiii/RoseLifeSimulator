@@ -18,7 +18,7 @@
             android:id="@+id/data1_title"/>
 
     <TextView
-            android:text="12.17.2018 2:30"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/data1_date"

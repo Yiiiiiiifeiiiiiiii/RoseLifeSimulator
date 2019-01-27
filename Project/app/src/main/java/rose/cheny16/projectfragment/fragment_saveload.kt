@@ -41,11 +41,11 @@ class fragment_saveload : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return return inflater.inflate(R.layout.save_load, container, false)
+        return return inflater.inflate(R.layout.save_load2, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
+    fun onButtonPressed(uri: Int) {
         listener?.onFragmentInteraction(uri)
     }
 
@@ -76,7 +76,10 @@ class fragment_saveload : Fragment() {
      */
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun onFragmentInteraction(uri: Int)
+
+
+
     }
 
     companion object {

@@ -12,7 +12,7 @@
               android:layout_marginLeft="30dp"
     />
 
-    <EditText android:layout_width="wrap_content"
+    <EditText android:layout_width="112dp"
               android:layout_height="wrap_content"
               android:id="@+id/accountInput"
               android:layout_marginTop="30dp"
@@ -21,13 +21,13 @@
               android:hint="@string/account"
     />
 
-    <EditText android:layout_width="wrap_content"
+    <EditText android:layout_width="113dp"
               android:layout_height="wrap_content"
               android:id="@+id/passwordInput"
               android:layout_below="@id/accountInput"
               android:layout_centerHorizontal="true"
               android:hint="@string/password"
-    />
+              android:layout_marginTop="0dp"/>
 
     <Button android:layout_width="wrap_content"
             android:layout_below="@id/passwordInput"
