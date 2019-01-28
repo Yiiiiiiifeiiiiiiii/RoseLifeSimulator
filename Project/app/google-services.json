@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "98400276996",
+    "firebase_url": "https://roselifesimulator.firebaseio.com",
+    "project_id": "roselifesimulator",
+    "storage_bucket": "roselifesimulator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98400276996:android:221709b398142c9a",
+        "android_client_info": {
+          "package_name": "rose.cheny16.projectfragment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98400276996-e14r23n0met1aj3h99iq9f077cihkvn1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rose.cheny16.projectfragment",
+            "certificate_hash": "aa0322525772593a3b08667963d7a073d153bb51"
+          }
+        },
+        {
+          "client_id": "98400276996-sb07d0dhhj1uko9grvm7vv27lj7713ib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD70PfS-EcajcKjZr4EDpJFC_i_2_yuFzE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98400276996-sb07d0dhhj1uko9grvm7vv27lj7713ib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

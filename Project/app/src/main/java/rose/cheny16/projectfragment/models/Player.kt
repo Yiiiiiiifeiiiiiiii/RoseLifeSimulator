@@ -1,6 +1,6 @@
 package rose.cheny16.projectfragment.models
 
-class Player(
-    var id: Int = 0,
-    var password: String = "xyz"
+data class Player(
+    var uid: String ="",
+    var name: String =""
 )

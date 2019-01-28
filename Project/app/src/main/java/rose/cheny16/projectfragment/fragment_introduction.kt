@@ -7,23 +7,24 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.introduction_view.view.*
 import kotlinx.android.synthetic.main.login.view.*
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_UID = "uid"
+
 
 class fragment_introduction : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
+    private var uid: String? = null
+
     private var listener: fragment_login.OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            uid = it.getString(ARG_UID)
+
         }
     }
 
@@ -35,9 +36,17 @@ class fragment_introduction : Fragment() {
         var con = context as fragment_login.IgetFt
         var ft = con.getFt()
         view.intro_login.setOnClickListener {
-            ft.replace(R.id.fragment_container,fragment_login(),"login")
-            ft.addToBackStack("intro")
-            ft.commit()
+            if(uid.equals("no id")){
+                Toast.makeText(context,"You have to Login!" ,Toast.LENGTH_LONG).show()
+                ft.replace(R.id.fragment_container,fragment_login(),"login")
+                ft.addToBackStack("intro")
+                ft.commit()
+            }else{
+                ft.replace(R.id.fragment_container,fragment_mainpage.newInstance(uid!!),"main")
+                ft.addToBackStack("intro")
+                ft.commit()
+            }
+
         }
         return view
     }
@@ -88,11 +97,11 @@ class fragment_introduction : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_login().apply {
+        fun newInstance(uid: String) =
+            fragment_introduction().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(ARG_UID, uid)
+
                 }
             }
     }

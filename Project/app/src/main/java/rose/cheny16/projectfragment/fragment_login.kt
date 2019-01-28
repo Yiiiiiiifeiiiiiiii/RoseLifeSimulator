@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,6 +41,27 @@ class fragment_login : Fragment() {
         }
     }
 
+
+    private fun lauchLoginUI(){
+        val providers = arrayListOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.PhoneBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
+
+        val loginIntent = AuthUI.getInstance()
+            .createSignInIntentBuilder()
+            .setAvailableProviders(providers)
+            .setLogo(R.drawable.ic_launcher_background)
+            .build()
+
+        startActivityForResult(loginIntent, RC_SIGN_IN)
+
+    }
+    private val RC_SIGN_IN = 1
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,9 +69,9 @@ class fragment_login : Fragment() {
         var view = inflater.inflate(R.layout.login, container, false)
         var con = context as fragment_mainpage.IgetFt
         var ft = con.getFt()
-        view.StartButton.setOnClickListener {
-            ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")
-            ft.commit()
+        view.login_button.setOnClickListener {
+            var loginCon = context as onLoginButtonPressedListener
+            loginCon.lauchLoginUI()
         }
         return view
     }
@@ -110,5 +133,9 @@ class fragment_login : Fragment() {
 
     interface IgetFt{
         fun getFt(): FragmentTransaction
+    }
+
+    interface onLoginButtonPressedListener{
+        fun lauchLoginUI()
     }
 }
