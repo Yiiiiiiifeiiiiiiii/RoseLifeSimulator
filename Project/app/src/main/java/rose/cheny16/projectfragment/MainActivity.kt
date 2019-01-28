@@ -8,7 +8,8 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
+//class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
+class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt{
 
     override fun getFt(): FragmentTransaction {
         return supportFragmentManager.beginTransaction()
@@ -20,7 +21,8 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         var ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.fragment_container,fragment_login(),"login")
+//        ft.replace(R.id.fragment_container,fragment_login(),"login")
+        ft.replace(R.id.fragment_container,fragment_introduction(),"intro")
         ft.commit()
     }
 

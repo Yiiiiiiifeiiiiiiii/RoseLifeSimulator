@@ -4,32 +4,20 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import kotlinx.android.synthetic.main.introduction_view.view.*
 import kotlinx.android.synthetic.main.login.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [fragment_login.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [fragment_login.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
-class fragment_login : Fragment() {
-    // TODO: Rename and change types of parameters
+class fragment_introduction : Fragment() {
+
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private var listener: fragment_login.OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +31,12 @@ class fragment_login : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.login, container, false)
-        var con = context as fragment_mainpage.IgetFt
+        var view = inflater.inflate(R.layout.introduction_view, container, false)
+        var con = context as fragment_login.IgetFt
         var ft = con.getFt()
-        view.StartButton.setOnClickListener {
-            ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")
+        view.intro_login.setOnClickListener {
+            ft.replace(R.id.fragment_container,fragment_login(),"login")
+            ft.addToBackStack("intro")
             ft.commit()
         }
         return view
@@ -60,10 +49,10 @@ class fragment_login : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
+        if (context is fragment_login.OnFragmentInteractionListener) {
             listener = context
         } else {
-          //  throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            //  throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -108,7 +97,4 @@ class fragment_login : Fragment() {
             }
     }
 
-    interface IgetFt{
-        fun getFt(): FragmentTransaction
-    }
 }

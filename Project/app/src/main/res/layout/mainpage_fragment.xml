@@ -76,20 +76,34 @@
             android:textSize="20dp"
 
     />
-    <Button android:layout_width="100dp" android:layout_height="50dp"
+    <TextView
+            android:text="Day 1"
+            android:textSize="20dp"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weekNumberTextView"
+            android:layout_alignEnd="@+id/weekNumberTextView"
+            android:id="@+id/dayNumber"
+            android:layout_marginEnd="-39dp"
+            android:layout_marginTop="-2dp"/>
+
+    <Button android:layout_width="100dp"
+            android:layout_height="50dp"
             android:text="NEXT DAY"
+            android:id="@+id/nextDay_button"
             android:layout_below="@id/weekNumberTextView"
-    />
+            android:layout_alignParentStart="true" android:layout_marginTop="21dp" android:layout_marginStart="0dp"/>
 
-    <android.support.v7.widget.LinearLayoutCompat android:layout_width="wrap_content"
-                                                  android:layout_height="wrap_content"
-                                                  android:orientation="vertical"
-                                                  android:layout_below="@+id/imageView"
-                                                  android:id="@+id/Buttons"
-
-
-                                                  android:layout_marginTop="-1dp" android:layout_alignParentEnd="true">
-        <Button android:layout_width="100dp" android:layout_height="50dp"
+    <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/imageView"
+            android:id="@+id/Buttons"
+            android:layout_marginTop="-1dp"
+            android:layout_alignParentEnd="true">
+        <Button android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:id="@+id/club_button"
                 android:text="CLUB"
         />

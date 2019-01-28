@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.mainpage_fragment.view.*
+import org.w3c.dom.Text
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,6 +32,9 @@ class fragment_mainpage : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var week: Int = 1
+    private var day: Int = 1
+//    private var date: Date = Date(2019,9,1)
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +52,20 @@ class fragment_mainpage : Fragment() {
         var view = inflater.inflate(R.layout.mainpage_fragment, container, false)
         var con = context as IgetFt
         var ft = con.getFt()
+
+        view.nextDay_button.setOnClickListener {
+            day += 1
+            if(day==8){
+                day =1
+                week += 1
+            }
+//            date = Date(2019,9,day)
+            var message_week = getString(R.string.week_format, week)
+            var message_day = getString(R.string.day_format, day)
+            view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
+            view.findViewById<TextView>(R.id.dayNumber).text = message_day
+        }
+
         view.club_button.setOnClickListener {
 
             ft.replace(R.id.fragment_container,fragment_story(),"detail")
