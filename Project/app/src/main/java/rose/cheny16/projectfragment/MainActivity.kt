@@ -16,11 +16,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
-    fragment_login.onLoginButtonPressedListener {
+    fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener {
+    override fun onFragmentInteraction(uri: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val RC_SIGN_IN = 1
     lateinit var authListener: FirebaseAuth.AuthStateListener
     val auth = FirebaseAuth.getInstance()
+    var saveLoadFragment: fragment_saveload? = null
 
     override fun getFt(): FragmentTransaction {
         return supportFragmentManager.beginTransaction()
@@ -29,6 +33,10 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authListener)
+        val user = auth.currentUser
+        if(user!=null) {
+            this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+        }
     }
 
     override fun onStop() {
@@ -95,14 +103,16 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
             }
             R.id.action_save -> {
                 var saveloadFT = supportFragmentManager.beginTransaction()
-                saveloadFT.replace(R.id.fragment_container,fragment_saveload(),"login")
+                saveLoadFragment!!.setSLMode(true) // true = save
+                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
                 saveloadFT.addToBackStack("list")
                 saveloadFT.commit()
                 true
             }
             R.id.action_load -> {
                 var saveloadFT = supportFragmentManager.beginTransaction()
-                saveloadFT.replace(R.id.fragment_container,fragment_saveload(),"login")
+                saveLoadFragment!!.setSLMode(false) // false = load
+                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
                 saveloadFT.addToBackStack("list")
                 saveloadFT.commit()
                 true
