@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.story_fragment.view.*
+import rose.cheny16.projectfragment.models.BobAtClub1
 import rose.cheny16.projectfragment.models.BobEvent1
 import rose.cheny16.projectfragment.models.Event
 import rose.cheny16.projectfragment.models.Word
@@ -45,22 +46,27 @@ class fragment_story : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.story_fragment, container, false)
+        lateinit var e: Event
         if(param1.equals("BobEvent1")){
-            var e = BobEvent1(context!!) as Event
-            view.next_button.setOnClickListener {
-                if(e.hasNext()){
-                    var w = e.next()
-                    view.people1.text = w.speaker
-                    view.talk.text = w.txt
-                }else{
-                    var con = context as fragment_mainpage.IgetFt
-                    var ft = con.getFt()
-                    ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")
-                    ft.addToBackStack("list")
-                    ft.commit()
-                }
+            e = BobEvent1(context!!) as Event
 
+        }else if(param1.equals("BobAtClub1")){
+            e = BobAtClub1(context!!) as Event
+        }
+
+        view.next_button.setOnClickListener {
+            if(e.hasNext()){
+                var w = e.next()
+                view.people1.text = w.speaker
+                view.talk.text = w.txt
+            }else{
+                var con = context as fragment_mainpage.IgetFt
+                var ft = con.getFt()
+                ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
             }
+
         }
         return view;
     }

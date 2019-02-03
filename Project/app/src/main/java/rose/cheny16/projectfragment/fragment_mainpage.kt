@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.mainpage_fragment.view.*
 import org.w3c.dom.Text
 import rose.cheny16.projectfragment.models.Status
@@ -54,7 +55,11 @@ class fragment_mainpage : Fragment() {
         var ft = con.getFt()
         var consta = context as Status.IgetStatus
         var sta = consta.getStatus()
-
+        
+        var message_week = getString(R.string.week_format, sta.Week)
+        var message_day = getString(R.string.day_format, sta.Day)
+        view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
+        view.findViewById<TextView>(R.id.dayNumber).text = message_day
         view.happinessTextView.text = getString(R.string.happiness_format,sta.happiness)
         view.actionPointTextView.text = getString(R.string.actionPoint_format, sta.actionPoint)
         view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
@@ -66,31 +71,44 @@ class fragment_mainpage : Fragment() {
                 sta.Day =1
                 sta.Week += 1
             }
+            sta.actionPoint = 30;
 //            date = Date(2019,9,day)
             var message_week = getString(R.string.week_format, sta.Week)
             var message_day = getString(R.string.day_format, sta.Day)
             view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
             view.findViewById<TextView>(R.id.dayNumber).text = message_day
-
+            view.actionPointTextView.text = getString(R.string.actionPoint_format, sta.actionPoint)
         }
 
         view.club_button.setOnClickListener {
+            if(sta.actionPoint == 0){
+                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
+            }else{
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("BobAtClub1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
 
-            ft.replace(R.id.fragment_container,fragment_story(),"detail")
-            ft.addToBackStack("list")
-            ft.commit()
 
         }
         view.class_button.setOnClickListener {
-            ft.replace(R.id.fragment_container,fragment_story(),"detail")
-            ft.addToBackStack("list")
-            ft.commit()
+            if(sta.actionPoint == 0){
+                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
+            }else {
+                ft.replace(R.id.fragment_container, fragment_story(), "detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
 
         }
         view.people_button.setOnClickListener {
-            ft.replace(R.id.fragment_container,fragment_people(),"detail")
-            ft.addToBackStack("list")
-            ft.commit()
+            if(sta.actionPoint == 0){
+                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
+            }else {
+                ft.replace(R.id.fragment_container, fragment_people(), "detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
 
         }
 
