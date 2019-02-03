@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.mainpage_fragment.view.*
 import org.w3c.dom.Text
+import rose.cheny16.projectfragment.models.Status
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -32,8 +33,7 @@ class fragment_mainpage : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
 
-    private var week: Int = 1
-    private var day: Int = 1
+
 //    private var date: Date = Date(2019,9,1)
     private var listener: OnFragmentInteractionListener? = null
 
@@ -52,18 +52,26 @@ class fragment_mainpage : Fragment() {
         var view = inflater.inflate(R.layout.mainpage_fragment, container, false)
         var con = context as IgetFt
         var ft = con.getFt()
+        var consta = context as Status.IgetStatus
+        var sta = consta.getStatus()
+
+        view.happinessTextView.text = getString(R.string.happiness_format,sta.happiness)
+        view.actionPointTextView.text = getString(R.string.actionPoint_format, sta.actionPoint)
+        view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
+        view.nameTexgtView.text = getString(R.string.name_format, sta.name)
 
         view.nextDay_button.setOnClickListener {
-            day += 1
-            if(day==8){
-                day =1
-                week += 1
+            sta.Day += 1
+            if(sta.Day==8){
+                sta.Day =1
+                sta.Week += 1
             }
 //            date = Date(2019,9,day)
-            var message_week = getString(R.string.week_format, week)
-            var message_day = getString(R.string.day_format, day)
+            var message_week = getString(R.string.week_format, sta.Week)
+            var message_day = getString(R.string.day_format, sta.Day)
             view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
             view.findViewById<TextView>(R.id.dayNumber).text = message_day
+
         }
 
         view.club_button.setOnClickListener {

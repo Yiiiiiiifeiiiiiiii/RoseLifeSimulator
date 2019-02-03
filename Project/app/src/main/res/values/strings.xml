@@ -14,10 +14,12 @@
     <string name="health_format">Health : %d</string>
     <string name="happiness_format">Happiness : %d</string>
     <string name="actionPoint_format">Action Point : %d</string>
+    <string name="gpa_format">Average GPA : %.2f</string>
+    <string name="name_format">Name : %s</string>
 
     <string name="year">Year: 2019</string>
     <string name="major">Major: CS</string>
-    <string name="playerName">Name: XXX</string>
+
 
     <string name="major_format">Major: %s</string>
     <string name="playerName_format">Name: %s</string>
@@ -50,5 +52,5 @@
         social life. Everything is fake, except school photos and some names (e.g. professors\', clubs\', etc).
     </string>
     <string name="are_you_sure_to_logout">Are You Sure to Logout?</string>
-    <string name="gpa">4.0</string>
+
 </resources>

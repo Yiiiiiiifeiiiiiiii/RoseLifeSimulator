@@ -46,7 +46,7 @@ class fragment_story : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.story_fragment, container, false)
         if(param1.equals("BobEvent1")){
-            var e = BobEvent1() as Event
+            var e = BobEvent1(context!!) as Event
             view.next_button.setOnClickListener {
                 if(e.hasNext()){
                     var w = e.next()

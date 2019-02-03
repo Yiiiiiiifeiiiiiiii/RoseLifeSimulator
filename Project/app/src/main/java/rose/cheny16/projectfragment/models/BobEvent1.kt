@@ -1,10 +1,12 @@
 package rose.cheny16.projectfragment.models
 
+import android.app.Activity
+import android.app.PendingIntent.getActivity
+import android.content.Context
 import rose.cheny16.projectfragment.MainActivity
 
-class BobEvent1: Event() {
-
-
+class BobEvent1(context:Context): Event(context) {
+    var con = context as Status.IgetStatus
     override var textContent0: ArrayList<Word>
             = ArrayList()
 
@@ -30,7 +32,7 @@ class BobEvent1: Event() {
         textContent0.add(Word("Bob", "Hey I'm Bob,"));
         textContent0.add(Word("Bob", "a CS freshman at Rose just like you "));
         textContent0.add(Word("Bob", "What's your name?"));
-        textContent0.add(Word("You", "I'm " + MainActivity.name.name + " . Nice to meet you Bob."  ));
+        textContent0.add(Word("You", "I'm " + con.getStatus().name + " . Nice to meet you Bob."  ));
         textContent0.add(Word("Bob", "Nice to meet you, too!"));
         textContent0.add(Word("Bob", "Do you know how to survive at Rose?"));
         textContent0.add(Word("You", "Hmm, never thought about that."));

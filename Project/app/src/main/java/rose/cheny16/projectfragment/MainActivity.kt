@@ -12,14 +12,17 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import rose.cheny16.projectfragment.models.Status
 
 
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
-    fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener {
-    object name {
-        var name: String = ""
+    fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener,Status.IgetStatus {
+    override fun getStatus(): Status {
+        return player
     }
+
+
     override fun onFragmentInteraction(uri: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -28,10 +31,13 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     lateinit var authListener: FirebaseAuth.AuthStateListener
     val auth = FirebaseAuth.getInstance()
     var saveLoadFragment: fragment_saveload? = null
+    var player = Status()
 
     override fun getFt(): FragmentTransaction {
         return supportFragmentManager.beginTransaction()
     }
+
+
 
     override fun onStart() {
         super.onStart()

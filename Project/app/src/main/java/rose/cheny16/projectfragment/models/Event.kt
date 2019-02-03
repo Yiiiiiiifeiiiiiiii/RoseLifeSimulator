@@ -1,8 +1,9 @@
 package rose.cheny16.projectfragment.models
 
+import android.content.Context
 import android.os.Parcelable
 
-abstract class Event: Iterator<Word> {
+abstract class Event(context: Context): Iterator<Word> {
 
     abstract var eventName: String;
     abstract var textContent0: ArrayList<Word>// Tai Ci
