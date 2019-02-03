@@ -17,6 +17,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
     fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener {
+    object name {
+        var name: String = ""
+    }
     override fun onFragmentInteraction(uri: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -129,12 +132,25 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
                     builder.setNegativeButton(android.R.string.cancel,null)
                     builder.setPositiveButton(android.R.string.ok,{_,_ ->
                         auth.signOut()
-                        Toast.makeText(this,"You have Logged Out!" ,Toast.LENGTH_LONG).show()
+                        Toast.makeText(this,"You have Logged Out!" ,Toast.LENGTH_SHORT).show()
                     })
                     builder.show()
 
                 }
 
+
+                true
+            }
+            R.id.action_help ->{
+                if(auth.uid != null){
+                    var ft = supportFragmentManager.beginTransaction()
+                    ft.replace(R.id.fragment_container,fragment_story.newInstance("BobEvent1"),"login")
+                    ft.addToBackStack("list")
+                    ft.commit()
+
+                }else{
+                    Toast.makeText(this,"You have to Login!",Toast.LENGTH_SHORT).show()
+                }
 
                 true
             }

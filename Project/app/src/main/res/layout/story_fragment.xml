@@ -39,12 +39,11 @@
     <TextView
             android:text="Hey! Come help us!"
             android:layout_width="wrap_content"
+            android:layout_marginTop="0dp"
             android:textSize="20dp"
+            android:layout_above="@id/Club"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:id="@+id/talk"
-            android:layout_alignStart="@+id/people1"
-            android:layout_marginBottom="117dp"
             android:layout_alignLeft="@+id/people1"/>
     <TextView
             android:text="Club!!!"

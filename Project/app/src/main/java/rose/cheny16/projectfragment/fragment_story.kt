@@ -7,12 +7,15 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.story_fragment.view.*
+import rose.cheny16.projectfragment.models.BobEvent1
+import rose.cheny16.projectfragment.models.Event
+import rose.cheny16.projectfragment.models.Word
 
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -26,14 +29,13 @@ private const val ARG_PARAM2 = "param2"
 class fragment_story : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
-    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -42,7 +44,25 @@ class fragment_story : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.story_fragment, container, false)
+        var view = inflater.inflate(R.layout.story_fragment, container, false)
+        if(param1.equals("BobEvent1")){
+            var e = BobEvent1() as Event
+            view.next_button.setOnClickListener {
+                if(e.hasNext()){
+                    var w = e.next()
+                    view.people1.text = w.speaker
+                    view.talk.text = w.txt
+                }else{
+                    var con = context as fragment_mainpage.IgetFt
+                    var ft = con.getFt()
+                    ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")
+                    ft.addToBackStack("list")
+                    ft.commit()
+                }
+
+            }
+        }
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -55,7 +75,7 @@ class fragment_story : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-           // throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            // throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -91,11 +111,10 @@ class fragment_story : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             fragment_story().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
     }
