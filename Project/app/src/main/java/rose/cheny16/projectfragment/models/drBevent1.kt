@@ -1,9 +1,8 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
-import rose.cheny16.projectfragment.MainActivity
 
-class BobAtClub1(context: Context): Event(context) {
+class drBevent1 (context: Context): Event(context) {
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0;
@@ -21,7 +20,7 @@ class BobAtClub1(context: Context): Event(context) {
 
     override var choice2: Word = Word("choice", "");
 
-    override var eventName = "BobAtClub1"
+    override var eventName = "drBevent1"
 
     override lateinit var ite0: Iterator<Word>
 
@@ -30,14 +29,11 @@ class BobAtClub1(context: Context): Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("Bob", "Hey you come!"));
-        textContent0.add(Word("Bob", "We are making this nice robot, join us! "));
-        textContent0.add(Word("You", "(Programming...)"));
-        textContent0.add(Word("You", "Some status changed"));
-        sta.CSSE120GPA = sta.CSSE120GPA + 0.2f
-        sta.GPA = (sta.GPA * 5 + 0.2f) / 5
-        sta.BobR = sta.BobR + 5
-        sta.actionPoint = sta.actionPoint - 10;
+        textContent0.add(Word("Dr. Boutell", "Hi. I’m Dr.Boutell. I can teach a lot of CSSE courses. "));
+        textContent0.add(Word("Dr. Boutell", "You will be probably with me sometime in the next couples of years."));
+        textContent0.add(Word("Dr. Boutell", "And tell you a secret. I’m the game master of this game, too."));
+        textContent0.add(Word("Dr. Boutell", "Come and draw a card from me. You will get a random present."));
+        textContent0.add(Word("Dr. Boutell", "And if you come here more  than 10 times, I’ll tell you a secret. "));
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -47,8 +43,8 @@ class BobAtClub1(context: Context): Event(context) {
 
     }
 
-    override fun makeChoice(c: Int) {
-        state = c
+    override fun makeChoice(c: Int){
+
     }
 
 

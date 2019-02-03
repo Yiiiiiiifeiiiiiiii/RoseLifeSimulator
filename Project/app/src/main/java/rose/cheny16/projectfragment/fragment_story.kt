@@ -8,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.story_fragment.view.*
-import rose.cheny16.projectfragment.models.BobAtClub1
-import rose.cheny16.projectfragment.models.BobEvent1
-import rose.cheny16.projectfragment.models.Event
-import rose.cheny16.projectfragment.models.Word
+import rose.cheny16.projectfragment.models.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,13 +49,47 @@ class fragment_story : Fragment() {
 
         }else if(param1.equals("BobAtClub1")){
             e = BobAtClub1(context!!) as Event
+        }else if(param1.equals("drBevent1")){
+            e = drBevent1(context!!)
+        }else if(param1.equals("drBevent2")){
+            e = drBevent2(context!!)
+        }else if(param1.equals("drBevent3")){
+            e = drBevent3(context!!)
+        }else if(param1.equals("drBevent4")){
+            e = drBevent4(context!!)
+        }
+
+        view.choice1.setOnClickListener {
+            e.makeChoice(1)
+            view.choice1.text = ""
+            view.choice2.text = "click next"
+            view.choice2.setOnClickListener(null)
+            view.choice1.setOnClickListener(null)
+
+        }
+
+        view.choice2.setOnClickListener {
+            e.makeChoice(2)
+            view.choice1.text = ""
+            view.choice2.text = "click next"
+            view.choice2.setOnClickListener(null)
+            view.choice1.setOnClickListener(null)
         }
 
         view.next_button.setOnClickListener {
             if(e.hasNext()){
                 var w = e.next()
-                view.people1.text = w.speaker
-                view.talk.text = w.txt
+                if(w.speaker.equals("choice")){
+                    view.choice1.text = w.txt
+                    view.choice2.text = e.next().txt
+                    view.talk.text = ""
+                }else{
+                    view.choice1.text = ""
+                    view.choice2.text = ""
+                    view.people1.text = w.speaker
+                    view.talk.text = w.txt
+                }
+
             }else{
                 var con = context as fragment_mainpage.IgetFt
                 var ft = con.getFt()

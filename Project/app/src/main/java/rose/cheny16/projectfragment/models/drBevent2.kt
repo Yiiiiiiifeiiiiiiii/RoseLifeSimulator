@@ -1,13 +1,11 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
-import rose.cheny16.projectfragment.MainActivity
 
-class BobAtClub1(context: Context): Event(context) {
+class drBevent2 (context: Context): Event(context) {
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0;
-
     override var textContent0: ArrayList<Word>
             = ArrayList()
 
@@ -21,7 +19,7 @@ class BobAtClub1(context: Context): Event(context) {
 
     override var choice2: Word = Word("choice", "");
 
-    override var eventName = "BobAtClub1"
+    override var eventName = "drBevent2"
 
     override lateinit var ite0: Iterator<Word>
 
@@ -30,13 +28,12 @@ class BobAtClub1(context: Context): Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("Bob", "Hey you come!"));
-        textContent0.add(Word("Bob", "We are making this nice robot, join us! "));
-        textContent0.add(Word("You", "(Programming...)"));
+        textContent0.add(Word("Dr. Boutell", "How can I help you today?"));
+        textContent0.add(Word("You", "drawing cards..."));
         textContent0.add(Word("You", "Some status changed"));
         sta.CSSE120GPA = sta.CSSE120GPA + 0.2f
         sta.GPA = (sta.GPA * 5 + 0.2f) / 5
-        sta.BobR = sta.BobR + 5
+        sta.happiness = sta.happiness + 5;
         sta.actionPoint = sta.actionPoint - 10;
 
         ite0 = textContent0.iterator()
@@ -50,6 +47,7 @@ class BobAtClub1(context: Context): Event(context) {
     override fun makeChoice(c: Int) {
         state = c
     }
+
 
 
 }

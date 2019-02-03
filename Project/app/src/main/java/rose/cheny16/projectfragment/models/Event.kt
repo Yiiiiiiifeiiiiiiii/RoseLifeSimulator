@@ -12,7 +12,7 @@ abstract class Event(context: Context): Iterator<Word> {
     abstract var ite0: Iterator<Word>
     abstract var ite1 : Iterator<Word>
     abstract var ite2: Iterator<Word>
-    var state = 0;
+    abstract var state: Int
     abstract var  choice1: Word;
     abstract var choice2:Word;
 
@@ -29,9 +29,7 @@ abstract class Event(context: Context): Iterator<Word> {
 
     }
 
-    fun makeChoice(c: Int){
-        state = c;
-    }
+    abstract fun makeChoice(c: Int)
 
     override fun hasNext(): Boolean {
         if(state == 0){

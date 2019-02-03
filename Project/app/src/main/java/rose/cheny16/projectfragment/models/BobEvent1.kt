@@ -9,6 +9,7 @@ class BobEvent1(context:Context): Event(context) {
     var con = context as Status.IgetStatus
     override var textContent0: ArrayList<Word>
             = ArrayList()
+    override var state = 0;
 
     override var textContent1: ArrayList<Word>
             =ArrayList()
@@ -69,6 +70,11 @@ class BobEvent1(context:Context): Event(context) {
 
 
     }
+
+    override fun makeChoice(c: Int) {
+        state = c
+    }
+
 
 
 }

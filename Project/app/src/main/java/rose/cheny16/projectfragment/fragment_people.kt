@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import kotlinx.android.synthetic.main.people_fragment.view.*
+import rose.cheny16.projectfragment.models.Status
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +32,8 @@ class fragment_people : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,7 +46,46 @@ class fragment_people : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.people_fragment, container, false)
+        var con = context as fragment_mainpage.IgetFt
+        var ft = con.getFt()
+        var consta = context as Status.IgetStatus
+        var sta = consta.getStatus()
+        var view = inflater.inflate(R.layout.people_fragment, container, false)
+        view.drB_head.setOnClickListener{
+            if(sta.DrBEventProgress == 0){
+                sta.DrBEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("drBevent1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if( sta.DrBEventProgress < 10){
+                sta.DrBEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("drBevent2"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+
+            }else if(sta.DrBEventProgress == 10){
+                sta.DrBEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("drBevent3"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+
+            }else if(sta.DrBEventProgress > 10){
+                sta.DrBEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("drBevent4"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+
+            }
+
+
+        }
+        view.girlfriend.setOnClickListener{
+
+        }
+        view.bsb.setOnClickListener {
+            Toast.makeText(context, "This part is till in progress!",Toast.LENGTH_SHORT).show()
+        }
+        return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event
