@@ -9,16 +9,23 @@ import android.widget.TextView
 import rose.cheny16.projectfragment.models.SaveFile
 import rose.cheny16.projectfragment.models.SaveString
 
-class SaveLoadViewHolder(itemView: View, var adapter: SaveLoadAdapter) : RecyclerView.ViewHolder(itemView) {
+class SaveLoadViewHolder(val saveload: String, itemView: View, var adapter: SaveLoadAdapter) : RecyclerView.ViewHolder(itemView) {
+
+    val action: String = saveload
     val button1: Button = itemView.findViewById(R.id.save_button1)
     val button2: Button = itemView.findViewById(R.id.save_button2)
     val button3: Button = itemView.findViewById(R.id.save_button3)
 
 
     init {
-
-        button1.setText("empty")
-
+        itemView.setOnClickListener {
+            if(action == "save"){
+                adapter.saveStatus(adapterPosition)
+                button1.text = "save 1:"+adapter.status.lastTouched.toString()
+            }else{
+                adapter.loadStatus(adapterPosition)
+            }
+        }
     }
 
     fun bind(){

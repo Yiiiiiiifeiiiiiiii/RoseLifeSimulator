@@ -7,15 +7,20 @@
     <string name="day_format">Day %d</string>
     <string name="week_format">Week %d </string>
 
-
     <string name="health">Health : 100</string>
     <string name="happiness">Happiness : 100</string>
-    <string name="GPA">GPA : 4.0</string>
-    <string name="actionPoint">Action Point : 20</string>
+    <string name="actionPoint">Action Point : 3</string>
+
+    <string name="health_format">Health : %d</string>
+    <string name="happiness_format">Happiness : %d</string>
+    <string name="actionPoint_format">Action Point : %d</string>
 
     <string name="year">Year: 2019</string>
     <string name="major">Major: CS</string>
     <string name="playerName">Name: XXX</string>
+
+    <string name="major_format">Major: %s</string>
+    <string name="playerName_format">Name: %s</string>
 
     <string name="hello_world">Hello World!</string>
 
@@ -30,12 +35,14 @@
     <string name="go">GO!</string>
     <string name="dr_boutell">Dr.Boutell</string>
     <string name="bsb_hall">BSB Hall</string>
-    <string name="unknown">Unknown???</string>
+    <string name="unknown_person_name">Unknown???</string>
 
 
     <!-- save string -->
     <string name="save_time">12.17.2018 2:30</string>
     <string name="save_slot_info_1">save slot 1: empty</string>
+    <string name="save_slot_info_2">save slot 2: empty</string>
+    <string name="save_slot_info_3">save slot 3: empty</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -43,4 +50,5 @@
         social life. Everything is fake, except school photos and some names (e.g. professors\', clubs\', etc).
     </string>
     <string name="are_you_sure_to_logout">Are You Sure to Logout?</string>
+    <string name="gpa">4.0</string>
 </resources>

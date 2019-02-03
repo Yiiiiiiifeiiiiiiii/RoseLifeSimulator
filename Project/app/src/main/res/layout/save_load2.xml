@@ -30,13 +30,13 @@
 
         />
         <Button android:id="@+id/save_button2"
-                android:text="@string/save_slot_info_1"
+                android:text="@string/save_slot_info_2"
                 android:textStyle="bold"
                 android:layout_width="match_parent" android:layout_height="150dp"
 
         />
         <Button android:id="@+id/save_button3"
-                android:text="@string/save_slot_info_1"
+                android:text="@string/save_slot_info_3"
                 android:textStyle="bold"
                 android:layout_width="match_parent" android:layout_height="150dp"
 

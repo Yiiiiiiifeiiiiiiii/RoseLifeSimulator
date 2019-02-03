@@ -93,7 +93,14 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
             R.id.action_settings -> {
                 true
             }
-            R.id.action_saveload -> {
+            R.id.action_save -> {
+                var saveloadFT = supportFragmentManager.beginTransaction()
+                saveloadFT.replace(R.id.fragment_container,fragment_saveload(),"login")
+                saveloadFT.addToBackStack("list")
+                saveloadFT.commit()
+                true
+            }
+            R.id.action_load -> {
                 var saveloadFT = supportFragmentManager.beginTransaction()
                 saveloadFT.replace(R.id.fragment_container,fragment_saveload(),"login")
                 saveloadFT.addToBackStack("list")

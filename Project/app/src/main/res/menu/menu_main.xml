@@ -7,10 +7,16 @@
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
-    <item android:id="@+id/action_saveload"
-          android:title="Save/Load"
+    <item android:id="@+id/action_save"
+          android:title="Save"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+
+    <item android:id="@+id/action_load"
+          android:title="Load"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
     <item android:id="@+id/action_logout"
           android:title="LOGOUT"
           android:orderInCategory="100"
