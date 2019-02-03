@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         val user = auth.currentUser
         if(user!=null) {
             this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+            saveLoadFragment!!.listener = this
         }
     }
 

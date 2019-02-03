@@ -25,9 +25,10 @@ class fragment_saveload : Fragment() {
     // TODO: Rename and change types of parameters
     private var uid: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    public var listener: OnFragmentInteractionListener? = null
     public var SLMode: Boolean? = true //true = save; false = load
     public var adapter: SaveLoadAdapter? = null
+    public var SLViewHolder : SaveLoadViewHolder? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +43,8 @@ class fragment_saveload : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var view = inflater.inflate(R.layout.save_load2, container, false)
-        adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
-
+        //adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
+        this.SLViewHolder = SaveLoadViewHolder(true,view,this.listener)
 
         return view
     }
@@ -84,7 +85,7 @@ class fragment_saveload : Fragment() {
      */
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Int)
+        fun onFragmentInteraction(saveSlotID: Int)
 
 
 

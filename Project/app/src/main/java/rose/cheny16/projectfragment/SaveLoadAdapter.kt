@@ -32,7 +32,8 @@ class SaveLoadAdapter(val context: Context,var listener: fragment_saveload.OnFra
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SaveLoadViewHolder {
         Log.d("test","vieholder created from adapter")
         val view = LayoutInflater.from(context).inflate(R.layout.save_load2, p0, false)
-        return SaveLoadViewHolder("save",view, this,context as fragment_saveload.OnFragmentInteractionListener)
+        //return SaveLoadViewHolder("save",view, this,context as fragment_saveload.OnFragmentInteractionListener)
+        return view as SaveLoadViewHolder
     }
 
     fun onCardClicked(position: Int) {
