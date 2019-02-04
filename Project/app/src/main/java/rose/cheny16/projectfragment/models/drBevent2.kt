@@ -41,7 +41,6 @@ class drBevent2 (context: Context): Event(context) {
         ite2 = textContent2.iterator()
 
 
-
     }
 
     override fun makeChoice(c: Int) {

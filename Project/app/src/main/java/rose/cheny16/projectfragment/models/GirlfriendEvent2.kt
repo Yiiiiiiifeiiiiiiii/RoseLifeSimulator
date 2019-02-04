@@ -50,7 +50,7 @@ class GirlfriendEvent2(context: Context) : Event(context) {
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
-
+        sta.actionPoint = sta.actionPoint - 10;
 
 
     }

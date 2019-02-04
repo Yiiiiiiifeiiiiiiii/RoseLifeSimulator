@@ -48,7 +48,7 @@ class GirlfriendEvent5(context: Context): Event(context) {
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
 
-
+        sta.actionPoint = sta.actionPoint - 10;
 
     }
 

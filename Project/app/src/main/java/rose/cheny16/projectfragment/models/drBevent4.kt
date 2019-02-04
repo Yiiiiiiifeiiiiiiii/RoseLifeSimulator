@@ -42,6 +42,7 @@ class drBevent4 (context: Context): Event(context) {
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
+        sta.actionPoint = sta.actionPoint - 10;
 
 
 
@@ -53,7 +54,6 @@ class drBevent4 (context: Context): Event(context) {
             sta.CSSE120GPA = sta.CSSE120GPA + 0.2f
             sta.GPA = (sta.GPA * 5 + 0.2f) / 5
             sta.happiness = sta.happiness + 5;
-            sta.actionPoint = sta.actionPoint - 10;
         }
     }
 

@@ -7,6 +7,7 @@ import rose.cheny16.projectfragment.MainActivity
 
 class BobEvent1(context:Context): Event(context) {
     var con = context as Status.IgetStatus
+    var sta  =con.getStatus()
     override var textContent0: ArrayList<Word>
             = ArrayList()
     override var state = 0;
@@ -66,6 +67,7 @@ class BobEvent1(context:Context): Event(context) {
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
+        sta.actionPoint = sta.actionPoint - 10;
 
 
 
