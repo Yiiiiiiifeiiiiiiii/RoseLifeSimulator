@@ -39,8 +39,6 @@ class GirlfriendEvent4(context: Context) : Event(context) {
             sta.GirlFriendR = sta.GirlFriendR -1000
         }
 
-
-
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
