@@ -80,6 +80,31 @@ class fragment_people : Fragment() {
 
         }
         view.girlfriend.setOnClickListener{
+            if(sta.GirlFriendEventProgress == 0){
+                sta.GirlFriendEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("GirlfriendEvent1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.GirlFriendEventProgress == 1){
+                sta.GirlFriendEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("GirlfriendEvent2"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.GirlFriendEventProgress == 2){
+                sta.GirlFriendEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("GirlfriendEvent3"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.GirlFriendEventProgress == 3){
+                sta.GirlFriendEventProgress ++;
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("GirlfriendEvent4"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.GirlFriendEventProgress == 4){
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("GirlfriendEvent5"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
 
         }
         view.bsb.setOnClickListener {

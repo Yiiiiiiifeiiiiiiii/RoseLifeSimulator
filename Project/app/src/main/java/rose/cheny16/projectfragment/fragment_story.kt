@@ -57,6 +57,17 @@ class fragment_story : Fragment() {
             e = drBevent3(context!!)
         }else if(param1.equals("drBevent4")){
             e = drBevent4(context!!)
+        }else if(param1.equals("GirlfriendEvent1")){
+            e = GirlfriendEvent1(context!!)
+        }else if(param1.equals("GirlfriendEvent2")){
+            e = GirlfriendEvent2(context!!)
+        }else if(param1.equals("GirlfriendEvent3")){
+            e = GirlfriendEvent3(context!!)
+        }else if(param1.equals("GirlfriendEvent4")){
+            e = GirlfriendEvent4(context!!)
+        }else if(param1.equals("GirlfriendEvent5")){
+            e = GirlfriendEvent5(context!!)
+
         }
 
         view.choice1.setOnClickListener {
@@ -65,6 +76,7 @@ class fragment_story : Fragment() {
             view.choice2.text = "click next"
             view.choice2.setOnClickListener(null)
             view.choice1.setOnClickListener(null)
+            view.next_button.isEnabled = true
 
         }
 
@@ -74,6 +86,8 @@ class fragment_story : Fragment() {
             view.choice2.text = "click next"
             view.choice2.setOnClickListener(null)
             view.choice1.setOnClickListener(null)
+            view.next_button.isEnabled = true
+
         }
 
         view.next_button.setOnClickListener {
@@ -83,6 +97,7 @@ class fragment_story : Fragment() {
                     view.choice1.text = w.txt
                     view.choice2.text = e.next().txt
                     view.talk.text = ""
+                    view.next_button.isEnabled = false
                 }else{
                     view.choice1.text = ""
                     view.choice2.text = ""
