@@ -20,7 +20,7 @@ class RH131event1(context: Context) : Event(context) {
 
     override var choice2: Word = Word("choice", "")
 
-    override var eventName = "RH131Event1"
+    override var eventName = "RH131event1"
 
     override lateinit var ite0: Iterator<Word>
 

@@ -67,7 +67,12 @@ class fragment_story : Fragment() {
             e = GirlfriendEvent4(context!!)
         }else if(param1.equals("GirlfriendEvent5")){
             e = GirlfriendEvent5(context!!)
-
+        }else if(param1.equals("RH131event1")){
+            e = RH131event1(context!!)
+        }else if(param1.equals("CHEM111event1")){
+            e = CHEM111event1(context!!)
+        }else if(param1.equals("CHEM111event2")){
+            e = CHEM111event2(context!!)
         }
 
         view.choice1.setOnClickListener {

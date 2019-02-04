@@ -20,6 +20,9 @@ data class Status(
     ,var BobEventProgress: Int  = 0//Bob's event progress
 , var GirlFriendEventProgress: Int  = 0//GF's event progress
     , var DrBEventProgress: Int = 0//DrB's event progress
+    , var RH131EventProgress: Int = 0
+    , var CHEM111EventProgress: Int = 0
+    , var JP111EventProgress: Int = 0
 , var Day: Int  = 1// 7 days per week
 , var Week: Int = 1// 10 week
     ) {

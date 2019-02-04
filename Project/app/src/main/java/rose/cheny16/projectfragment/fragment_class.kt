@@ -4,17 +4,14 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.mainpage_fragment.view.*
-import org.w3c.dom.Text
+import kotlinx.android.synthetic.main.class_fragment.view.*
+import kotlinx.android.synthetic.main.people_fragment.view.*
 import rose.cheny16.projectfragment.models.Status
-import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,25 +21,24 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [fragment_mainpage.OnFragmentInteractionListener] interface
+ * [fragment_people.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [fragment_mainpage.newInstance] factory method to
+ * Use the [fragment_people.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class fragment_mainpage : Fragment() {
+class fragment_class : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
-
-
-//    private var date: Date = Date(2019,9,1)
+    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
-
+            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -50,68 +46,38 @@ class fragment_mainpage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.mainpage_fragment, container, false)
-        var con = context as IgetFt
+        var con = context as fragment_mainpage.IgetFt
         var ft = con.getFt()
         var consta = context as Status.IgetStatus
         var sta = consta.getStatus()
-        
-        var message_week = getString(R.string.week_format, sta.Week)
-        var message_day = getString(R.string.day_format, sta.Day)
-        view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
-        view.findViewById<TextView>(R.id.dayNumber).text = message_day
-        view.happinessTextView.text = getString(R.string.happiness_format,sta.happiness)
-        view.actionPointTextView.text = getString(R.string.actionPoint_format, sta.actionPoint)
-        view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
-        view.nameTexgtView.text = getString(R.string.name_format, sta.name)
-
-        view.nextDay_button.setOnClickListener {
-            sta.Day += 1
-            if(sta.Day==8){
-                sta.Day =1
-                sta.Week += 1
-            }
-            sta.actionPoint = 30;
-//            date = Date(2019,9,day)
-            var message_week = getString(R.string.week_format, sta.Week)
-            var message_day = getString(R.string.day_format, sta.Day)
-            view.findViewById<TextView>(R.id.weekNumberTextView).text = message_week
-            view.findViewById<TextView>(R.id.dayNumber).text = message_day
-            view.actionPointTextView.text = getString(R.string.actionPoint_format, sta.actionPoint)
-        }
-
-        view.club_button.setOnClickListener {
-            if(sta.actionPoint == 0){
-                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
-            }else{
-                ft.replace(R.id.fragment_container,fragment_story.newInstance("BobAtClub1"),"detail")
+        var view = inflater.inflate(R.layout.class_fragment, container, false)
+        view.rh131_button.setOnClickListener{
+            //if(sta.RH131EventProgress == 0){
+                sta.RH131EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("RH131event1"),"detail")
                 ft.addToBackStack("list")
                 ft.commit()
-            }
+            //}
 
 
         }
-        view.class_button.setOnClickListener {
-            if(sta.actionPoint == 0){
-                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
-            }else {
-                ft.replace(R.id.fragment_container, fragment_class(), "detail")
+        view.chem111_button.setOnClickListener{
+            if(sta.CHEM111EventProgress == 0){
+                sta.CHEM111EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("CHEM111event1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.CHEM111EventProgress == 1){
+                sta.CHEM111EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("CHEM111event2"),"detail")
                 ft.addToBackStack("list")
                 ft.commit()
             }
 
         }
-        view.people_button.setOnClickListener {
-            if(sta.actionPoint == 0){
-                Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
-            }else {
-                ft.replace(R.id.fragment_container, fragment_people(), "detail")
-                ft.addToBackStack("list")
-                ft.commit()
-            }
-
+        view.jp111_button.setOnClickListener {
+            Toast.makeText(context, "This part is till in progress!", Toast.LENGTH_SHORT).show()
         }
-
         return view
     }
 
@@ -125,7 +91,7 @@ class fragment_mainpage : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-          //  throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            //  throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -157,20 +123,16 @@ class fragment_mainpage : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_mainpage.
+         * @return A new instance of fragment fragment_people.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String) =
-            fragment_mainpage().apply {
+        fun newInstance(param1: String, param2: String) =
+            fragment_people().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
-
+                    putString(ARG_PARAM2, param2)
                 }
             }
-    }
-
-    interface IgetFt{
-        fun getFt():FragmentTransaction
     }
 }
