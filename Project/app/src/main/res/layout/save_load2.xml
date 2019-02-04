@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:id="@+id/CardView"
         android:padding="4dp"
         android:layout_margin="4dp"
         android:layout_height="wrap_content">
@@ -29,18 +30,18 @@
                 android:layout_width="match_parent" android:layout_height="150dp"
 
         />
-        <Button android:id="@+id/save_button2"
-                android:text="@string/save_slot_info_2"
-                android:textStyle="bold"
-                android:layout_width="match_parent" android:layout_height="150dp"
+        <!--<Button android:id="@+id/save_button2"-->
+                <!--android:text="@string/save_slot_info_2"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_width="match_parent" android:layout_height="150dp"-->
 
-        />
-        <Button android:id="@+id/save_button3"
-                android:text="@string/save_slot_info_3"
-                android:textStyle="bold"
-                android:layout_width="match_parent" android:layout_height="150dp"
+        <!--/>-->
+        <!--<Button android:id="@+id/save_button3"-->
+                <!--android:text="@string/save_slot_info_3"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_width="match_parent" android:layout_height="150dp"-->
 
-        />
+        <!--/>-->
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

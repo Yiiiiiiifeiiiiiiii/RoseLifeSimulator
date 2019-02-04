@@ -8,14 +8,10 @@
           app:showAsAction="never"/>
 
     <item android:id="@+id/action_save"
-          android:title="Save"
+          android:title="Save and Load"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
-    <item android:id="@+id/action_load"
-          android:title="Load"
-          android:orderInCategory="100"
-          app:showAsAction="never"/>
     <item android:id="@+id/action_help"
           android:title="How to Play?"
           android:orderInCategory="100"

@@ -3,6 +3,7 @@ package rose.cheny16.projectfragment
 import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.Menu
@@ -19,6 +20,14 @@ import rose.cheny16.projectfragment.models.Status
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
     fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener,Status.IgetStatus {
+    override fun getFab(): FloatingActionButton {
+        return fab
+    }
+
+    override fun setStatus(s: Status) {
+        this.player = s;
+    }
+
     override fun getStatus(): Status {
         return player
     }
@@ -34,6 +43,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     var saveLoadFragment: fragment_saveload? = null
     var player = Status()
 
+
     override fun getFt(): FragmentTransaction {
         return supportFragmentManager.beginTransaction()
     }
@@ -43,11 +53,8 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authListener)
-        val user = auth.currentUser
-        if(user!=null) {
-            this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
-            saveLoadFragment!!.listener = this
-        }
+
+
     }
 
     override fun onStop() {
@@ -101,6 +108,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
+        fab.hide()
         return true
     }
 
@@ -124,21 +132,16 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
                 true
             }
             R.id.action_save -> {
+                val user = auth.currentUser
+                this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+                saveLoadFragment!!.listener = this
                 var saveloadFT = supportFragmentManager.beginTransaction()
-                saveLoadFragment!!.setSLMode(true) // true = save
                 saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
                 saveloadFT.addToBackStack("list")
                 saveloadFT.commit()
                 true
             }
-            R.id.action_load -> {
-                var saveloadFT = supportFragmentManager.beginTransaction()
-                saveLoadFragment!!.setSLMode(false) // false = load
-                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
-                saveloadFT.addToBackStack("list")
-                saveloadFT.commit()
-                true
-            }
+
             R.id.action_logout ->{
                 if(auth.uid == null){
                     Toast.makeText(this,"You have Logged Out!" ,Toast.LENGTH_LONG).show()

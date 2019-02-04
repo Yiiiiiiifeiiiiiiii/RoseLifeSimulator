@@ -1,11 +1,17 @@
 package rose.cheny16.projectfragment
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import rose.cheny16.projectfragment.R.layout.activity_main
+import rose.cheny16.projectfragment.models.Status
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,9 +48,19 @@ class fragment_saveload : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.save_load2, container, false)
-        //adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
-        this.SLViewHolder = SaveLoadViewHolder(true,view,this.listener)
+        var view = inflater.inflate(R.layout.list_view,container,false) as RecyclerView
+        adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
+        adapter!!.addSnapshotListener()
+        view.layoutManager = LinearLayoutManager(context)
+        var lm = view.layoutManager
+        view.setHasFixedSize(true)
+        view.adapter=adapter
+        var callback = ItemSwipeCallback(adapter!!)
+        var ith = ItemTouchHelper(callback)
+        ith.attachToRecyclerView(view)
+
+
+
 
         return view
     }

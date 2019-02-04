@@ -1,5 +1,6 @@
 package rose.cheny16.projectfragment.models
 
+import android.support.design.widget.FloatingActionButton
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Exclude
@@ -42,6 +43,8 @@ data class Status(
     }
     interface IgetStatus{
         fun getStatus():Status
+        fun setStatus(s: Status)
+        fun getFab(): FloatingActionButton
     }
 
 }
