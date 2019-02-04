@@ -12,6 +12,7 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.menudialog.view.*
 import rose.cheny16.projectfragment.models.Status
 
 
@@ -109,6 +110,17 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> {
+                var builder = AlertDialog.Builder(this)
+                var view = LayoutInflater.from(this).inflate(R.layout.menudialog,null,false)
+                builder.setView(view)
+                builder.setTitle("Settings")
+                builder.setPositiveButton(android.R.string.ok,{_,_ ->
+                    val name = view.edit_name.text.toString()
+                    player.name = name
+
+                })
+                builder.setNegativeButton(android.R.string.cancel,null)
+                builder.show()
                 true
             }
             R.id.action_save -> {

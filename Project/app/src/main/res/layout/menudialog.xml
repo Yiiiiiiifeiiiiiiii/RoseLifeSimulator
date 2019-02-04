@@ -4,44 +4,9 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/SaveGame"
-              android:textSize="30sp"
-              android:layout_gravity="center"
-              android:text="@string/save_game"
-    />
-
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/LoadGame"
-              android:textSize="30sp"
-              android:layout_gravity="center"
-              android:text="@string/load_game"
-    />
-
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/Settings"
-              android:layout_gravity="center"
-              android:textSize="30sp"
-              android:text="@string/settings"
-    />
-
-    <TextView android:layout_width="wrap_content"
-              android:id="@+id/Exit"
-              android:layout_gravity="center"
-              android:layout_height="wrap_content"
-              android:textSize="30sp"
-              android:text="Exit Game"
-    />
-
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="end"
-              android:textSize="30sp"
-              android:id="@+id/Back"
-              android:text="@string/back"
-    />
+   <EditText android:layout_width="match_parent"
+             android:hint="change your name here"
+             android:id="@+id/edit_name"
+             android:layout_height="wrap_content"/>
 
 </LinearLayout>
