@@ -3,11 +3,13 @@ package rose.cheny16.projectfragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+
 import kotlinx.android.synthetic.main.introduction_view.view.*
 import kotlinx.android.synthetic.main.login.view.*
 
@@ -35,6 +37,13 @@ class fragment_introduction : Fragment() {
         var view = inflater.inflate(R.layout.introduction_view, container, false)
         var con = context as fragment_login.IgetFt
         var ft = con.getFt()
+        val path = "android.resource://" + getActivity()!!.getPackageName()+  "/"+R.raw.rose_video
+        view.vv?.setVideoURI(Uri.parse(path))
+        view.intro_video_button.setOnClickListener {
+            view.intro_text.visibility =  View.INVISIBLE
+            view.vv.start()
+        }
+
         view.intro_login.setOnClickListener {
             if(uid.equals("no id")){
                 Toast.makeText(context,"You have to Login!" ,Toast.LENGTH_LONG).show()
