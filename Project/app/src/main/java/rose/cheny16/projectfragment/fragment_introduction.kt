@@ -12,6 +12,13 @@ import android.widget.Toast
 
 import kotlinx.android.synthetic.main.introduction_view.view.*
 import kotlinx.android.synthetic.main.login.view.*
+import android.R.attr.button
+import android.widget.Button
+import android.view.animation.AnimationSet
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.widget.TextView
+
 
 private const val ARG_UID = "uid"
 
@@ -41,9 +48,19 @@ class fragment_introduction : Fragment() {
         view.vv?.setVideoURI(Uri.parse(path))
         view.intro_video_button.setOnClickListener {
 
+            val b = view.findViewById<Button>(R.id.intro_video_button)
+            b.setVisibility(View.GONE)
+
 
             view.intro_text.visibility =  View.INVISIBLE
             view.vv.start()
+
+            val out = AlphaAnimation(1.0f, 0.0f)
+            out.duration = 3000
+
+            val title = view.findViewById<TextView>(R.id.intro_title)
+            title.startAnimation(out!!)
+            title.setVisibility(View.GONE)
         }
 
         view.intro_login.setOnClickListener {
