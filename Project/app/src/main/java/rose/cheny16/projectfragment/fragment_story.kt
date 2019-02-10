@@ -74,7 +74,10 @@ class fragment_story : Fragment() {
             e = CHEM111event2(context!!)
         }else if(param1.equals("FinalExamEvent1")){
             e = FinalExamEvent1(context!!)
+        }else if(param1.equals("EndEvent1")){
+            e = EndEvent1(context!!)
         }
+
 
         view.choice1.setOnClickListener {
             e.makeChoice(1)
@@ -111,7 +114,14 @@ class fragment_story : Fragment() {
                     view.talk.text = w.txt
                 }
 
-            }else{
+            }else if(param1.equals("FinalExamEvent1")){
+                var con = context as fragment_mainpage.IgetFt
+                var ft = con.getFt()
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("EndEvent1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
+            else{
                 var con = context as fragment_mainpage.IgetFt
                 var ft = con.getFt()
                 ft.replace(R.id.fragment_container,fragment_mainpage(),"detail")

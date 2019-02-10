@@ -40,6 +40,8 @@ class fragment_introduction : Fragment() {
         val path = "android.resource://" + getActivity()!!.getPackageName()+  "/"+R.raw.rose_video
         view.vv?.setVideoURI(Uri.parse(path))
         view.intro_video_button.setOnClickListener {
+
+
             view.intro_text.visibility =  View.INVISIBLE
             view.vv.start()
         }

@@ -74,13 +74,18 @@ class fragment_mainpage : Fragment() {
                 sta.Day =1
                 sta.Week += 1
             }
-            if(sta.Week == 10){
+            if(sta.Week >= 10){
                 // TODO: go to end
                 Toast.makeText(context,"Final Exam time!", Toast.LENGTH_SHORT).show()
                 ft.replace(R.id.fragment_container,fragment_story.newInstance("FinalExamEvent1"),"detail")
                 ft.addToBackStack("list")
                 ft.commit()
+
+
             }
+
+
+
             if(!isClassed){
                 sta.GPA = sta.GPA-0.01f
                 view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
