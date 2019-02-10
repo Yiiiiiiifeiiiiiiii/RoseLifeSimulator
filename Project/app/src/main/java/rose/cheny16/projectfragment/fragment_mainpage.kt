@@ -33,6 +33,8 @@ private const val ARG_PARAM2 = "param2"
 class fragment_mainpage : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
+    var isClassed = false
+
 
 
 //    private var date: Date = Date(2019,9,1)
@@ -55,6 +57,7 @@ class fragment_mainpage : Fragment() {
         var ft = con.getFt()
         var consta = context as Status.IgetStatus
         var sta = consta.getStatus()
+        var isClassed = false
         
         var message_week = getString(R.string.week_format, sta.Week)
         var message_day = getString(R.string.day_format, sta.Day)
@@ -71,7 +74,20 @@ class fragment_mainpage : Fragment() {
                 sta.Day =1
                 sta.Week += 1
             }
-            sta.actionPoint = 30;
+            if(sta.Week == 10){
+                // TODO: go to end
+
+            }
+            if(!isClassed){
+                sta.GPA = sta.GPA-0.01f
+                view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
+            }
+            if(sta.GPA > 4){
+                sta.GPA = 4f
+                view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
+            }
+            isClassed = false
+            sta.actionPoint = 30
 //            date = Date(2019,9,day)
             var message_week = getString(R.string.week_format, sta.Week)
             var message_day = getString(R.string.day_format, sta.Day)
@@ -95,6 +111,7 @@ class fragment_mainpage : Fragment() {
             if(sta.actionPoint == 0){
                 Toast.makeText(context,"You don't have action point", Toast.LENGTH_SHORT).show()
             }else {
+                isClassed = true;
                 ft.replace(R.id.fragment_container, fragment_class(), "detail")
                 ft.addToBackStack("list")
                 ft.commit()

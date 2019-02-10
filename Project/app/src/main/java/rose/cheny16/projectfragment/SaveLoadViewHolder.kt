@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.save_load2.view.*
 import rose.cheny16.projectfragment.models.Status
 
@@ -27,6 +28,10 @@ class SaveLoadViewHolder(val saveload: Boolean, itemView: View,
                 var con = context as Status.IgetStatus
                 adapter.loadStatus(adapterPosition)
                 Log.d("test","loadmode actived")
+            Toast.makeText(context,
+                "new game status loaded",
+                Toast.LENGTH_LONG
+            ).show()
 
 
         }

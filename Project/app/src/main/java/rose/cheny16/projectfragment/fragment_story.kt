@@ -46,7 +46,6 @@ class fragment_story : Fragment() {
         lateinit var e: Event
         if(param1.equals("BobEvent1")){
             e = BobEvent1(context!!) as Event
-
         }else if(param1.equals("BobAtClub1")){
             e = BobAtClub1(context!!) as Event
         }else if(param1.equals("drBevent1")){
