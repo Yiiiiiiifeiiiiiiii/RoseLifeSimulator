@@ -116,16 +116,14 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        initControls()
         initializeListeners()
 
 
 
     }
 
-    private fun initControls() {
+    private fun initControls(volumeSeekbar: SeekBar) {
         try {
-            var volumeSeekbar = findViewById(R.id.seekBar) as SeekBar
             audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             volumeSeekbar.setMax(
                 audioManager!!
@@ -169,6 +167,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
             R.id.action_settings -> {
                 var builder = AlertDialog.Builder(this)
                 var view = LayoutInflater.from(this).inflate(R.layout.menudialog,null,false)
+                initControls(view.seekBar)
                 builder.setView(view)
                 builder.setTitle("Settings")
                 builder.setPositiveButton(android.R.string.ok,{_,_ ->
