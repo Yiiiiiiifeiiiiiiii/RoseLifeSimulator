@@ -1,6 +1,7 @@
 package rose.cheny16.projectfragment
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -28,6 +29,7 @@ class fragment_story : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    lateinit var mp: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,10 @@ class fragment_story : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        mp = MediaPlayer.create(context,R.raw.background3)
+
+        mp.start()
+        mp.isLooping = true
         var view = inflater.inflate(R.layout.story_fragment, container, false)
         lateinit var e: Event
         if(param1.equals("BobEvent1")){
@@ -77,7 +83,7 @@ class fragment_story : Fragment() {
         }else if(param1.equals("EndEvent1")){
             e = EndEvent1(context!!)
         }
-
+        view.imageView.setImageResource(e.place)
 
         view.choice1.setOnClickListener {
             e.makeChoice(1)
@@ -102,7 +108,10 @@ class fragment_story : Fragment() {
         view.next_button.setOnClickListener {
             if(e.hasNext()){
                 var w = e.next()
-                if(w.speaker.equals("choice")){
+                if(w.speaker.equals("switch")){
+                    view.imageView.setImageResource(e.place2)
+                }
+                else if(w.speaker.equals("choice")){
                     view.choice1.text = w.txt
                     view.choice2.text = e.next().txt
                     view.talk.text = ""
@@ -112,6 +121,7 @@ class fragment_story : Fragment() {
                     view.choice2.text = ""
                     view.people1.text = w.speaker
                     view.talk.text = w.txt
+                    view.head.setImageResource(Util.npcToDrawable.get(w.speaker)!!)
                 }
 
             }else if(param1.equals("FinalExamEvent1")){
@@ -150,6 +160,11 @@ class fragment_story : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mp.release()
+
     }
 
     /**

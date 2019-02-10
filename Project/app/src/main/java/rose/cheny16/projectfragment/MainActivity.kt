@@ -1,6 +1,8 @@
 package rose.cheny16.projectfragment
 
 import android.app.AlertDialog
+import android.content.Context
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -15,14 +17,22 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menudialog.view.*
 import rose.cheny16.projectfragment.models.Status
+import android.media.AudioManager
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import android.content.Context.AUDIO_SERVICE
+
+
+
+
 
 
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
     fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener,Status.IgetStatus {
-    override fun getFab(): FloatingActionButton {
-        return fab
-    }
+
+
+
 
     override fun setStatus(s: Status) {
         this.player = s;
@@ -31,6 +41,8 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     override fun getStatus(): Status {
         return player
     }
+
+
 
 
     override fun onFragmentInteraction(uri: Int) {
@@ -42,6 +54,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     val auth = FirebaseAuth.getInstance()
     var saveLoadFragment: fragment_saveload? = null
     var player = Status()
+    private var audioManager: AudioManager? = null
 
 
     override fun getFt(): FragmentTransaction {
@@ -102,13 +115,49 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        initControls()
         initializeListeners()
+
+
+
+    }
+
+    private fun initControls() {
+        try {
+            var volumeSeekbar = findViewById(R.id.seekBar) as SeekBar
+            audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            volumeSeekbar.setMax(
+                audioManager!!
+                    .getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            )
+            volumeSeekbar.setProgress(
+                audioManager!!
+                    .getStreamVolume(AudioManager.STREAM_MUSIC)
+            )
+
+
+            volumeSeekbar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+                override fun onStopTrackingTouch(arg0: SeekBar) {}
+
+                override fun onStartTrackingTouch(arg0: SeekBar) {}
+
+                override fun onProgressChanged(arg0: SeekBar, progress: Int, arg2: Boolean) {
+                    audioManager!!.setStreamVolume(
+                        AudioManager.STREAM_MUSIC,
+                        progress, 0
+                    )
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
-        fab.hide()
         return true
     }
 

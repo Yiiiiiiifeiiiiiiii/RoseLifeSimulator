@@ -1,8 +1,14 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import rose.cheny16.projectfragment.R
 
 class GirlfriendEvent2(context: Context) : Event(context) {
+    override var place: Int = R.drawable.whitechapel
+
+    override var place2: Int = R.drawable.subway
+
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0;
@@ -37,6 +43,7 @@ class GirlfriendEvent2(context: Context) : Event(context) {
         textContent0.add(Word("You", "Tina you bad girl."));
         textContent0.add(Word("Girl", "Thank you and shall we go to Subway! I can’t wait!"));
         textContent0.add(Word("You", "Sure let’s go."));
+        textContent0.add(Word("switch", ""))
         textContent0.add(Word("You", "(Arrived at Subway)"));
         textContent0.add(Word("Girl", "Nice. I’ll order meetball + lettuce + tomato + cheese + barbecue saurce."));
         textContent0.add(Word("You", "Same. "));

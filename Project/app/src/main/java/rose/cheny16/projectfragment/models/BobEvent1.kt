@@ -4,8 +4,14 @@ import android.app.Activity
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import rose.cheny16.projectfragment.MainActivity
+import rose.cheny16.projectfragment.R
 
 class BobEvent1(context:Context): Event(context) {
+    override var place: Int = R.drawable.club
+
+    override var place2: Int = R.drawable.club
+
+
     var con = context as Status.IgetStatus
     var sta  =con.getStatus()
     override var textContent0: ArrayList<Word>
@@ -67,7 +73,6 @@ class BobEvent1(context:Context): Event(context) {
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
-        sta.actionPoint = sta.actionPoint - 10;
 
 
 

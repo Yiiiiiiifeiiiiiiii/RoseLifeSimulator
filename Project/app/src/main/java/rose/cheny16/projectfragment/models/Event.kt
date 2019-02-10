@@ -15,6 +15,9 @@ abstract class Event(context: Context): Iterator<Word> {
     abstract var state: Int
     abstract var  choice1: Word;
     abstract var choice2:Word;
+    abstract var place: Int;
+    abstract var place2: Int;
+
 
 
 

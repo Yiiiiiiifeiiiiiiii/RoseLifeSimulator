@@ -44,7 +44,6 @@ data class Status(
     interface IgetStatus{
         fun getStatus():Status
         fun setStatus(s: Status)
-        fun getFab(): FloatingActionButton
     }
 
 }

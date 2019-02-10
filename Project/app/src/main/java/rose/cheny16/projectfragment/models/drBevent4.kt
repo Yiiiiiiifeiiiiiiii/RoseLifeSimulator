@@ -1,8 +1,13 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import rose.cheny16.projectfragment.R
 
 class drBevent4 (context: Context): Event(context) {
+    override var place: Int = R.drawable.food
+
+    override var place2: Int = R.drawable.food
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0;

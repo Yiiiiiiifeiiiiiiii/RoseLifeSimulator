@@ -2,8 +2,14 @@ package rose.cheny16.projectfragment.models
 
 import android.content.Context
 import rose.cheny16.projectfragment.MainActivity
+import rose.cheny16.projectfragment.R
 
 class BobAtClub1(context: Context): Event(context) {
+    override var place: Int = R.drawable.club
+
+    override var place2: Int = R.drawable.club
+
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0;

@@ -1,6 +1,7 @@
 package rose.cheny16.projectfragment
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -34,6 +35,7 @@ class fragment_mainpage : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     var isClassed = false
+    lateinit var mp: MediaPlayer
 
 
 
@@ -52,6 +54,10 @@ class fragment_mainpage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mp = MediaPlayer.create(context,R.raw.background1)
+
+        mp.start()
+        mp.isLooping = true
         var view = inflater.inflate(R.layout.mainpage_fragment, container, false)
         var con = context as IgetFt
         var ft = con.getFt()
@@ -152,6 +158,12 @@ class fragment_mainpage : Fragment() {
         } else {
           //  throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mp.release()
+
     }
 
     override fun onDetach() {

@@ -1,8 +1,13 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import rose.cheny16.projectfragment.R
 
 class CHEM111event2(context: Context) : Event(context) {
+    override var place: Int = R.drawable.classroom
+    override var place2: Int = R.drawable.classroom
+
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0
@@ -35,7 +40,7 @@ class CHEM111event2(context: Context) : Event(context) {
         textContent0.add(choice1)
         textContent0.add(choice2)
 
-        textContent1.add(Word("Professor", "Hey. What questions do you have?"))
+        textContent1.add(Word("Dr. Weatherman", "Hey. What questions do you have?"))
         textContent1.add(Word("You", "Well, I am wondering…"))
 
         textContent2.add(Word("You", "zzzZZZ......"))

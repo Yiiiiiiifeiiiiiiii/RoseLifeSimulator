@@ -1,8 +1,13 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import rose.cheny16.projectfragment.R
 
 class FinalExamEvent1(context: Context) : Event(context) {
+    override var place: Int = R.drawable.classroom
+
+    override var place2: Int = R.drawable.classroom
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0
@@ -29,7 +34,7 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("", "You are taking a final exam…"))
+        textContent0.add(Word("You", "You are taking a final exam…"))
         textContent0.add(Word("You", "This problem is sooooo hard, \n should I skip it?"))
 
         textContent0.add(choice1)

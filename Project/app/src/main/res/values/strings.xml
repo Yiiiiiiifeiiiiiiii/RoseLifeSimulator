@@ -37,7 +37,7 @@
     <string name="go">GO!</string>
     <string name="dr_boutell">Dr.Boutell</string>
     <string name="bsb_hall">BSB Hall</string>
-    <string name="unknown_person_name">Unknown???</string>
+    <string name="unknown_person_name">A Girl of Your Type</string>
 
 
     <!-- save string -->
@@ -52,5 +52,7 @@
         social life. Everything is fake, except school photos and some names (e.g. professors\', clubs\', etc).
     </string>
     <string name="are_you_sure_to_logout">Are You Sure to Logout?</string>
+    <string name="your_name">Your Name</string>
+    <string name="bgm_volume">BGM Volume</string>
 
 </resources>

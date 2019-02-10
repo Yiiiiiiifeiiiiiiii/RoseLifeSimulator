@@ -1,8 +1,13 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import rose.cheny16.projectfragment.R
 
 class EndEvent1(context: Context) : Event(context) {
+    override var place2: Int = R.drawable.campus
+
+    override var place: Int = R.drawable.campus
+
     var con = context as Status.IgetStatus
     var sta = con.getStatus()
     override var state = 0
@@ -29,17 +34,17 @@ class EndEvent1(context: Context) : Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("", "You survived this term. Congratulations! "))
-        textContent0.add(Word("", "Now your GPA is ${sta.GPA}"))
+        textContent0.add(Word("Dr. Boutell", "You survived this term. Congratulations! "))
+        textContent0.add(Word("Dr. Boutell", "Now your GPA is ${sta.GPA}"))
         if(sta.GPA >= 4){
-            textContent0.add(Word("", "Amazing work!!! How can you do that? \nAre you an alien?"))
+            textContent0.add(Word("Dr. Boutell", "Amazing work!!! How can you do that? \nAre you an alien?"))
 
         }else if (sta.GPA >= 3.5){
-            textContent0.add(Word("", "Great work! I am so proud of you"))
+            textContent0.add(Word("Dr. Boutell", "Great work! I am so proud of you"))
         }else if (sta.GPA < 2.5){
-            textContent0.add(Word("", "Maybe next time try harder?"))
+            textContent0.add(Word("Dr. Boutell", "Maybe next time try harder?"))
         }else{
-            textContent0.add(Word("", "Not bad. But I believe you can do better!"))
+            textContent0.add(Word("Dr. Boutell", "Not bad. But I believe you can do better!"))
         }
 
 

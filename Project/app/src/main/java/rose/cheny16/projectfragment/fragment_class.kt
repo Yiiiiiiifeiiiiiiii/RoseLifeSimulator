@@ -1,6 +1,7 @@
 package rose.cheny16.projectfragment
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -32,6 +33,8 @@ class fragment_class : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    lateinit var mp: MediaPlayer
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +49,10 @@ class fragment_class : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mp = MediaPlayer.create(context,R.raw.background2)
+
+        mp.start()
+        mp.isLooping = true
         var con = context as fragment_mainpage.IgetFt
         var ft = con.getFt()
         var consta = context as Status.IgetStatus
@@ -79,6 +86,11 @@ class fragment_class : Fragment() {
             Toast.makeText(context, "This part is till in progress!", Toast.LENGTH_SHORT).show()
         }
         return view
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mp.release()
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

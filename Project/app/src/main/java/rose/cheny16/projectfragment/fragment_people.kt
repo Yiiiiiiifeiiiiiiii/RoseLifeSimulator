@@ -1,6 +1,7 @@
 package rose.cheny16.projectfragment
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -31,6 +32,8 @@ class fragment_people : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    lateinit var mp: MediaPlayer
+
 
 
 
@@ -42,10 +45,20 @@ class fragment_people : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mp.release()
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mp = MediaPlayer.create(context,R.raw.background2)
+
+        mp.start()
+        mp.isLooping = true
         var con = context as fragment_mainpage.IgetFt
         var ft = con.getFt()
         var consta = context as Status.IgetStatus

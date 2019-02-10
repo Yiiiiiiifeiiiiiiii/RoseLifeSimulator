@@ -8,10 +8,19 @@
             android:layout_width="fill_parent"
             android:layout_height="350dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/club"
-            android:src="@drawable/club"
+            app:srcCompat="@drawable/campus"
+            android:src="@drawable/campus"
             android:id="@+id/imageView"
             android:adjustViewBounds="true"/>
+
+    <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/head"
+            android:adjustViewBounds="true" android:layout_alignParentRight="true"
+            android:layout_above="@+id/next_button" android:layout_alignParentEnd="true" android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp" android:layout_marginBottom="73dp"/>
     <Button
             android:text="Next"
             android:layout_width="wrap_content"

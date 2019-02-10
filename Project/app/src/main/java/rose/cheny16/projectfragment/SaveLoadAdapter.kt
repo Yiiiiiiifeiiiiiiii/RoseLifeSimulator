@@ -46,7 +46,7 @@ class SaveLoadAdapter(val context: Context,var listener: fragment_saveload.OnFra
             }
         }
         var con = context as Status.IgetStatus
-        var fab = con.getFab()
+
 
         statusRef1.add(con.getStatus())
     }
