@@ -49,8 +49,6 @@ class CHEM111event2(context: Context) : Event(context) {
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
 
-        sta.happiness = sta.happiness + 1
-
         sta.actionPoint = sta.actionPoint - 10
 
 

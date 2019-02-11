@@ -3,7 +3,7 @@ package rose.cheny16.projectfragment.models
 import android.content.Context
 import rose.cheny16.projectfragment.R
 
-class FinalExamEvent1(context: Context) : Event(context) {
+class JP111event2(context: Context) : Event(context) {
     override var place: Int = R.drawable.classroom
 
     override var place2: Int = R.drawable.classroom
@@ -21,11 +21,11 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "Skip")
+    override var choice1: Word = Word("choice", "A: Tokyo")
 
-    override var choice2: Word = Word("choice", "Just do it!!!")
+    override var choice2: Word = Word("choice", "B: Kyoto")
 
-    override var eventName = "FinalExamEvent1"
+    override var eventName = "JP111event2"
 
     override lateinit var ite0: Iterator<Word>
 
@@ -34,11 +34,19 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("You", "You are taking a final exam…"))
-        textContent0.add(Word("You", "This problem is sooooo hard, \n should I skip it?"))
+
+        textContent0.add(Word("Dr. Hirotani", "Surprise!"))
+        textContent0.add(Word("Dr. Hirotani", "Simple quiz question!"))
+        textContent0.add(Word("Dr. Hirotani", "Where is Fuji mountain located at?"))
+        textContent0.add(Word("You", "I'm not sure. Let me guess..."))
 
         textContent0.add(choice1)
         textContent0.add(choice2)
+
+        textContent1.add(Word("Dr. Hirotani", "Congratulations!"))
+        textContent1.add(Word("You", "Yeah!"))
+
+        textContent2.add(Word("Dr. Hirotani", "You are wrong..."))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -52,10 +60,12 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override fun makeChoice(c: Int) {
         state = c
         if(c == 1){
-            sta.GPA = (sta.GPA +  (4 - sta.GPA)/5 )
+            sta.JP111GPA = sta.JP111GPA + 0.1f
+            sta.GPA = (sta.GPA * 5 + 0.1f) / 5
             sta.happiness = sta.happiness + 5
         }else{
-            sta.GPA = (sta.GPA +  (3 - sta.GPA)/5 )
+            sta.JP111GPA = sta.JP111GPA - 0.1f
+            sta.GPA = (sta.GPA * 5 - 0.1f) / 5
         }
     }
 }

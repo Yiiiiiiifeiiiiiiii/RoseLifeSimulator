@@ -66,15 +66,14 @@ class fragment_class : Fragment() {
                 ft.commit()
             //}
 
-
         }
         view.chem111_button.setOnClickListener{
-            if(sta.CHEM111EventProgress == 0){
+            if(sta.CHEM111EventProgress % 2 == 0){
                 sta.CHEM111EventProgress ++
                 ft.replace(R.id.fragment_container,fragment_story.newInstance("CHEM111event1"),"detail")
                 ft.addToBackStack("list")
                 ft.commit()
-            }else if(sta.CHEM111EventProgress == 1){
+            }else if(sta.CHEM111EventProgress %2 == 1){
                 sta.CHEM111EventProgress ++
                 ft.replace(R.id.fragment_container,fragment_story.newInstance("CHEM111event2"),"detail")
                 ft.addToBackStack("list")
@@ -83,7 +82,17 @@ class fragment_class : Fragment() {
 
         }
         view.jp111_button.setOnClickListener {
-            Toast.makeText(context, "This part is till in progress!", Toast.LENGTH_SHORT).show()
+            if(sta.JP111EventProgress % 2 == 0){
+                sta.JP111EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("JP111event1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.JP111EventProgress %2 == 1){
+                sta.JP111EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("JP111event2"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
         }
         return view
     }

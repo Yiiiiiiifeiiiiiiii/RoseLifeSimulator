@@ -3,7 +3,7 @@ package rose.cheny16.projectfragment.models
 import android.content.Context
 import rose.cheny16.projectfragment.R
 
-class FinalExamEvent1(context: Context) : Event(context) {
+class JP111event1(context: Context) : Event(context) {
     override var place: Int = R.drawable.classroom
 
     override var place2: Int = R.drawable.classroom
@@ -21,11 +21,11 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "Skip")
+    override var choice1: Word = Word("choice", "")
 
-    override var choice2: Word = Word("choice", "Just do it!!!")
+    override var choice2: Word = Word("choice", "")
 
-    override var eventName = "FinalExamEvent1"
+    override var eventName = "JP111event1"
 
     override lateinit var ite0: Iterator<Word>
 
@@ -34,15 +34,13 @@ class FinalExamEvent1(context: Context) : Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("You", "You are taking a final exam…"))
-        textContent0.add(Word("You", "This problem is sooooo hard, \n should I skip it?"))
-
-        textContent0.add(choice1)
-        textContent0.add(choice2)
+        textContent0.add(Word("You", "This class we watched a movie about Japanese culture…"))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
+
+        sta.happiness = sta.happiness + 1
 
         sta.actionPoint = sta.actionPoint - 10
 
@@ -51,11 +49,5 @@ class FinalExamEvent1(context: Context) : Event(context) {
 
     override fun makeChoice(c: Int) {
         state = c
-        if(c == 1){
-            sta.GPA = (sta.GPA +  (4 - sta.GPA)/5 )
-            sta.happiness = sta.happiness + 5
-        }else{
-            sta.GPA = (sta.GPA +  (3 - sta.GPA)/5 )
-        }
     }
 }
