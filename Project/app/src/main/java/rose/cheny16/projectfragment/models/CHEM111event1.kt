@@ -59,8 +59,6 @@ class CHEM111event1(context: Context) : Event(context) {
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
 
-        sta.happiness = sta.happiness + 1
-
         sta.actionPoint = sta.actionPoint - 10
 
     }
@@ -70,18 +68,18 @@ class CHEM111event1(context: Context) : Event(context) {
         if(c == 1){
             if(correct==1){
                 sta.CHEM111GPA = sta.CHEM111GPA + 0.1f
-                sta.GPA = (sta.GPA * 5 + 0.1f) / 5
+                sta.GPA = (sta.GPA * 4 + 0.1f) / 4
             }else{
                 sta.CHEM111GPA = sta.CHEM111GPA - 0.1f
-                sta.GPA = (sta.GPA * 5 - 0.1f) / 5
+                sta.GPA = (sta.GPA * 4 - 0.1f) / 4
             }
         }else{
             if(correct==1){
                 sta.CHEM111GPA = sta.CHEM111GPA - 0.1f
-                sta.GPA = (sta.GPA * 5 - 0.1f) / 5
+                sta.GPA = (sta.GPA * 4 - 0.1f) / 4
             }else{
                 sta.CHEM111GPA = sta.CHEM111GPA + 0.1f
-                sta.GPA = (sta.GPA * 5 + 0.1f) / 5
+                sta.GPA = (sta.GPA * 4 + 0.1f) / 4
             }
         }
     }

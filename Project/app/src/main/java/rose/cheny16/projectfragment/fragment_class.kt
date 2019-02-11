@@ -94,6 +94,19 @@ class fragment_class : Fragment() {
                 ft.commit()
             }
         }
+        view.csse120_button.setOnClickListener {
+            if(sta.CSSE120EventProgress % 2 == 0){
+                sta.CSSE120EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("CSSE120event1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(sta.CSSE120EventProgress %2 == 1){
+                sta.CSSE120EventProgress ++
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("CSSE120event2"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
+        }
         return view
     }
     override fun onDestroyView() {

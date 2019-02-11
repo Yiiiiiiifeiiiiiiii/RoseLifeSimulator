@@ -35,16 +35,16 @@ class drBevent3(context: Context): Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("Dr. Boutell", "You have been here 10 times and I’ll tell you the secret."));
-        textContent0.add(Word("Dr. Boutell", "Go to this link.  "));
-        textContent0.add(Word("Dr. Boutell", "You will find all the answers to the quizzes and exams for this game."));
-        textContent0.add(Word("Dr. Boutell", "I won’t do this in reality! I’m doing this because this is a game!"));
-        textContent0.add(Word("Dr. Boutell", "linkkk"));
+        textContent0.add(Word("Dr. Boutell", "You have been here 10 times and I’ll tell you the secret."))
+        textContent0.add(Word("Dr. Boutell", "Go to this link.  "))
+        textContent0.add(Word("Dr. Boutell", "You will find all the answers to the quizzes and exams for this game."))
+        textContent0.add(Word("Dr. Boutell", "I won’t do this in reality! I’m doing this because this is a game!"))
+        textContent0.add(Word("Dr. Boutell", "linkkk"))
 
         sta.CSSE120GPA = sta.CSSE120GPA + 0.2f
-        sta.GPA = (sta.GPA * 5 + 0.2f) / 5
+        sta.GPA = (sta.GPA * 4 + 0.2f) / 4
         sta.BobR = sta.BobR + 5
-        sta.actionPoint = sta.actionPoint - 10;
+        sta.actionPoint = sta.actionPoint - 10
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()

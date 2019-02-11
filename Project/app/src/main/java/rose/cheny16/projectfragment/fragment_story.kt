@@ -86,6 +86,10 @@ class fragment_story : Fragment() {
             e = JP111event1(context!!)
         }else if(param1.equals("JP111event2")){
             e = JP111event2(context!!)
+        }else if(param1.equals("CSSE120event1")){
+            e = CSSE120event1(context!!)
+        }else if(param1.equals("CSSE120event2")){
+            e = CSSE120event2(context!!)
         }
         view.imageView.setImageResource(e.place)
 

@@ -42,8 +42,10 @@ class CHEM111event2(context: Context) : Event(context) {
 
         textContent1.add(Word("Dr. Weatherman", "Hey. What questions do you have?"))
         textContent1.add(Word("You", "Well, I am wondering…"))
+        textContent1.add(Word("You", "Some status changed"))
 
         textContent2.add(Word("You", "zzzZZZ......"))
+        textContent2.add(Word("You", "Some status changed"))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -58,10 +60,10 @@ class CHEM111event2(context: Context) : Event(context) {
         state = c
         if(c == 1){
             sta.CHEM111GPA = sta.CHEM111GPA + 0.1f
-            sta.GPA = (sta.GPA * 5 + 0.1f) / 5
+            sta.GPA = (sta.GPA * 4 + 0.1f) / 4
         }else{
             sta.CHEM111GPA = sta.CHEM111GPA - 0.1f
-            sta.GPA = (sta.GPA * 5 - 0.1f) / 5
+            sta.GPA = (sta.GPA * 4 - 0.1f) / 4
             sta.happiness = sta.happiness + 1
         }
     }

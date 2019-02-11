@@ -29,6 +29,16 @@
             android:layout_height="wrap_content" android:layout_alignParentStart="true"
             android:layout_below="@+id/chem111_button" android:layout_marginStart="52dp"
             android:layout_alignParentLeft="true" android:id="@+id/jp111_button" android:layout_marginLeft="52dp"/>
+    <Button
+            android:text="CSSE120"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/csse120_button"
+            android:layout_alignStart="@+id/chem111_button"
+            android:layout_marginBottom="19dp"
+            android:layout_alignLeft="@+id/chem111_button" android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"/>
 
 
 </RelativeLayout>

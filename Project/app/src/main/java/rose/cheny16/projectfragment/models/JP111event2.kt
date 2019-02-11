@@ -45,8 +45,10 @@ class JP111event2(context: Context) : Event(context) {
 
         textContent1.add(Word("Dr. Hirotani", "Congratulations!"))
         textContent1.add(Word("You", "Yeah!"))
+        textContent1.add(Word("You", "Some status changed"))
 
         textContent2.add(Word("Dr. Hirotani", "You are wrong..."))
+        textContent2.add(Word("You", "Some status changed"))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -61,11 +63,11 @@ class JP111event2(context: Context) : Event(context) {
         state = c
         if(c == 1){
             sta.JP111GPA = sta.JP111GPA + 0.1f
-            sta.GPA = (sta.GPA * 5 + 0.1f) / 5
+            sta.GPA = (sta.GPA * 4 + 0.1f) / 4
             sta.happiness = sta.happiness + 5
         }else{
             sta.JP111GPA = sta.JP111GPA - 0.1f
-            sta.GPA = (sta.GPA * 5 - 0.1f) / 5
+            sta.GPA = (sta.GPA * 4 - 0.1f) / 4
         }
     }
 }

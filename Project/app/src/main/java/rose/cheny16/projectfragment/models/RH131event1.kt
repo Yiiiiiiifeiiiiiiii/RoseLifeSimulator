@@ -35,12 +35,13 @@ class RH131event1(context: Context) : Event(context) {
 
     init{
         textContent0.add(Word("You", "This class we watched a movie…"))
+        textContent0.add(Word("You", "Some status changed"))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
 
-        sta.happiness = sta.happiness + 1
+        sta.happiness = sta.happiness + 5
 
         sta.actionPoint = sta.actionPoint - 10
 

@@ -12,9 +12,10 @@ data class Status(
     ,var CLSK100GPA: Float= 3.00f
 ,var JP111GPA: Float= 3.00f
 ,var CHEM111GPA: Float= 3.00f
+    ,var RH131GPA: Float= 3.00f
 , var name: String = "John"
 , var happiness: Int = 50
-    , var GPA: Float = (CSSE120GPA + MA113GPA + CLSK100GPA + JP111GPA + CHEM111GPA) /5
+    , var GPA: Float = (RH131GPA + CSSE120GPA + JP111GPA + CHEM111GPA) /4
     , var actionPoint: Int = 30
 , var BobR: Int  = 0    //Bob's relation
 , var GirlFriendR: Int = 0 // GF's relation
@@ -24,6 +25,7 @@ data class Status(
     , var RH131EventProgress: Int = 0
     , var CHEM111EventProgress: Int = 0
     , var JP111EventProgress: Int = 0
+    , var CSSE120EventProgress: Int = 0
 , var Day: Int  = 1// 7 days per week
 , var Week: Int = 1// 10 week
     ) {
