@@ -42,15 +42,17 @@ class FinalExamEvent2(context: Context) : Event(context) {
 
         textContent0.add(choice1)
         textContent0.add(choice2)
+        textContent1.add(Word("Girl", ": )  "));
+        textContent2.add(Word("Girl", "Hahaaa, of course you know"));
 
+        textContent0.add(Word("You", "Some status changed"))
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
         ite2 = textContent2.iterator()
 
         sta.actionPoint = sta.actionPoint - 10
-
-
+        
     }
 
     override fun makeChoice(c: Int) {
@@ -60,10 +62,10 @@ class FinalExamEvent2(context: Context) : Event(context) {
             sta.GPA = "%.2f".format((sta.GPA +  (4 - sta.GPA)/5 )).toFloat()
         }else if(c == 1){
             sta.GPA = "%.2f".format((sta.GPA +  (3.5 - sta.GPA)/4 )).toFloat()
-            textContent1.add(Word("Girl", ": )"));
+
         }else{
             sta.GPA = "%.2f".format((sta.GPA +  (3 - sta.GPA)/5 )).toFloat()
-            textContent1.add(Word("Girl", "I think you don't know"));
+
         }
     }
 }

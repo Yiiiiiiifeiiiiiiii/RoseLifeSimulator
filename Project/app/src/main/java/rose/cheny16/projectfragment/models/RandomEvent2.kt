@@ -40,6 +40,9 @@ class RandomEvent2(context: Context) : Event(context) {
         textContent0.add(choice1)
         textContent0.add(choice2)
 
+        textContent0.add(Word("You", "Some status changed"))
+
+
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -60,8 +63,7 @@ class RandomEvent2(context: Context) : Event(context) {
             sta.GPA = sta.GPA + 0.05f
             textContent0.add(Word("Bob", "Fine, goodbye nerd."))
         }
-        textContent0.add(Word("You", "Some status changed"))
-    }
+        }
 
 
 
