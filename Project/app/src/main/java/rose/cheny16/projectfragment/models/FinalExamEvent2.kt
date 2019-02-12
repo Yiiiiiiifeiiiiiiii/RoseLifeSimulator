@@ -23,11 +23,10 @@ class FinalExamEvent2(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "1. Girl")
+    override var choice1: Word = Word("choice", "1. Rem")
 
     override var choice2: Word = Word("choice", "2. Tina ")
 
-    var choice3: Word = Word("choice", "3. Rem ")
 
     override var eventName = "FinalExamEvent2"
 
@@ -43,7 +42,7 @@ class FinalExamEvent2(context: Context) : Event(context) {
 
         textContent0.add(choice1)
         textContent0.add(choice2)
-        textContent0.add(choice3)
+
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -59,7 +58,7 @@ class FinalExamEvent2(context: Context) : Event(context) {
         state = c
         if(c == 2){
             sta.GPA = "%.2f".format((sta.GPA +  (4 - sta.GPA)/5 )).toFloat()
-        }else if(c == 3){
+        }else if(c == 1){
             sta.GPA = "%.2f".format((sta.GPA +  (3.5 - sta.GPA)/4 )).toFloat()
             textContent1.add(Word("Girl", ": )"));
         }else{

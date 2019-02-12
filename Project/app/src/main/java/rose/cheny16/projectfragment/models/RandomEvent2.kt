@@ -21,9 +21,9 @@ class RandomEvent2(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "1. I love sports");
+    override var choice1: Word = Word("choice", "I love sports");
 
-    override var choice2: Word = Word("choice", "2. Errr... \nSorry I must finish my homework first");
+    override var choice2: Word = Word("choice", "Sorry I must finish homework");
 
     override var eventName = "RandomEvent2"
 

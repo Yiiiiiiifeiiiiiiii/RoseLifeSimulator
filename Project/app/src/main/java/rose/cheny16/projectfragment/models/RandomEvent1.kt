@@ -21,9 +21,9 @@ class RandomEvent1(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "1. My pleasure");
+    override var choice1: Word = Word("choice", "My pleasure");
 
-    override var choice2: Word = Word("choice", "2. Errr... \nSorry I must review for my test now");
+    override var choice2: Word = Word("choice", "Sorry I must review the test");
 
     override var eventName = "RandomEvent1"
 
@@ -34,12 +34,14 @@ class RandomEvent1(context: Context) : Event(context) {
     override lateinit var ite2: Iterator<Word>
 
     init{
-        textContent0.add(Word("Girl", "Heyy! Can you give a favor?"));
-        textContent0.add(Word("Girl", "Can you go to my dorm room and bring my laptop here?"));
-        textContent0.add(Word("Girl", "I'm in middle of something!"))
+        textContent0.add(Word("Girl", "Heyy! Can you give me a favor?"));
+        textContent0.add(Word("Girl", "I need someone go to my room and bring me my laptop"))
 
         textContent0.add(choice1)
         textContent0.add(choice2)
+
+        textContent1.add(Word("Girl", "Thanks! I love you!"))
+        textContent2.add(Word("Girl", "Okay... \nI will find someone else"))
 
 
         ite0 = textContent0.iterator()

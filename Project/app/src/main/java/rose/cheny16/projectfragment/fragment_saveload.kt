@@ -35,7 +35,7 @@ class fragment_saveload : Fragment() {
     public var SLMode: Boolean? = true //true = save; false = load
     public var adapter: SaveLoadAdapter? = null
     public var SLViewHolder : SaveLoadViewHolder? = null
-
+    var view : RecyclerView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -48,15 +48,15 @@ class fragment_saveload : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.list_view,container,false) as RecyclerView
+        view = inflater.inflate(R.layout.list_view,container,false) as RecyclerView
         adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
 
         adapter!!.addSnapshotListener(param2!!)
 
-        view.layoutManager = LinearLayoutManager(context)
-        var lm = view.layoutManager
-        view.setHasFixedSize(true)
-        view.adapter=adapter
+        view!!.layoutManager = LinearLayoutManager(context)
+        //var lm = view!!.layoutManager
+        view!!.setHasFixedSize(true)
+        view!!.adapter=adapter
 
         var callback = ItemSwipeCallback(adapter!!)
         var ith = ItemTouchHelper(callback)

@@ -36,6 +36,7 @@ import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
@@ -123,7 +124,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         val loginIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
-            .setLogo(R.drawable.ic_launcher_background)
+            .setLogo(R.drawable.icon_512)
             .build()
 
         startActivityForResult(loginIntent, RC_SIGN_IN)
@@ -323,6 +324,8 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
                 builder.setPositiveButton(android.R.string.ok,{_,_ ->
                     val name = view.edit_name.text.toString()
                     player.name = name
+                    val textView: TextView = findViewById(R.id.nameTexgtView) as TextView
+                    textView.text =getString(R.string.name_format, name)
 
                 })
                 builder.setNegativeButton(android.R.string.cancel,null)
