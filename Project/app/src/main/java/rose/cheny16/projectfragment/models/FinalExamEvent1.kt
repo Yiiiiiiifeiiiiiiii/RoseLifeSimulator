@@ -2,6 +2,8 @@ package rose.cheny16.projectfragment.models
 
 import android.content.Context
 import rose.cheny16.projectfragment.R
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class FinalExamEvent1(context: Context) : Event(context) {
     override var place: Int = R.drawable.classroom
@@ -50,12 +52,13 @@ class FinalExamEvent1(context: Context) : Event(context) {
     }
 
     override fun makeChoice(c: Int) {
+        val df = DecimalFormat("#.###")
         state = c
         if(c == 1){
-            sta.GPA = (sta.GPA +  (4 - sta.GPA)/4 )
+            sta.GPA = "%.2f".format((sta.GPA +  (4 - sta.GPA)/4 )).toFloat()
             sta.happiness = sta.happiness + 5
         }else{
-            sta.GPA = (sta.GPA +  (3 - sta.GPA)/4 )
+            sta.GPA = "%.2f".format((sta.GPA +  (3 - sta.GPA)/4 )).toFloat()
         }
     }
 }
