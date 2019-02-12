@@ -1,6 +1,7 @@
 package rose.cheny16.projectfragment
 
 import android.content.Context
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -29,10 +30,13 @@ class SaveLoadViewHolder(val saveload: Boolean, itemView: View,
                 adapter.loadStatus(adapterPosition)
                 Log.d("test","loadmode actived")
             Toast.makeText(context,
-                "new game status loaded",
+                "game loaded",
                 Toast.LENGTH_LONG
             ).show()
-
+            //listener!!.onFragmentInteraction(adapterPosition)
+            //adapter.listener!!.onFragmentInteraction(adapterPosition)
+            val main = context as AppCompatActivity
+            main.onBackPressed()
 
         }
     }

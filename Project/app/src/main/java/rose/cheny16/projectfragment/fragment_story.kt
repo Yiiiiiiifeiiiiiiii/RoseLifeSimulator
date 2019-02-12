@@ -129,7 +129,9 @@ class fragment_story : Fragment() {
                     view.choice2.text = ""
                     view.people1.text = w.speaker
                     view.talk.text = w.txt
-                    view.head.setImageResource(Util.npcToDrawable.get(w.speaker)!!)
+                    if(w.speaker!=null &&
+                        !w.speaker.equals(""))
+                        view.head.setImageResource(Util.npcToDrawable.get(w.speaker)!!)
                 }
 
             }else if(param1.equals("FinalExamEvent1")){

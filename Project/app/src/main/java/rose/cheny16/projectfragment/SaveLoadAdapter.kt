@@ -12,7 +12,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import rose.cheny16.projectfragment.Constants.STATUS_COLLECTION
 import rose.cheny16.projectfragment.models.Status
 
-class SaveLoadAdapter(val context: Context,var listener: fragment_saveload.OnFragmentInteractionListener?,
+class SaveLoadAdapter(val context: Context,val listener: fragment_saveload.OnFragmentInteractionListener?,
                       val uid: String) : RecyclerView.Adapter<SaveLoadViewHolder>(){
 
     var statuss= ArrayList<Status>()
@@ -97,6 +97,7 @@ class SaveLoadAdapter(val context: Context,var listener: fragment_saveload.OnFra
     fun loadStatus(adapterPosition: Int) {
         var con = context as Status.IgetStatus
         con.setStatus(statuss[adapterPosition])
+      // listener!!.onFragmentInteraction(adapterPosition)
 
     }
 }

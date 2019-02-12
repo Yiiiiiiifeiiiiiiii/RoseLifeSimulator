@@ -1,9 +1,11 @@
 package rose.cheny16.projectfragment.models
 
 import android.content.Context
+import android.widget.Toast
+
 import rose.cheny16.projectfragment.R
 
-class EndEvent1(context: Context) : Event(context) {
+class EndEvent1(val context: Context) : Event(context) {
     override var place2: Int = R.drawable.campus
 
     override var place: Int = R.drawable.campus
@@ -21,9 +23,9 @@ class EndEvent1(context: Context) : Event(context) {
     override var textContent2: ArrayList<Word>
             =ArrayList()
 
-    override var choice1: Word = Word("choice", "Skip")
+    override var choice1: Word = Word("choice", "Challenge accept")
 
-    override var choice2: Word = Word("choice", "Just do it!!!")
+    override var choice2: Word = Word("choice", "I'll take some rest first")
 
     override var eventName = "FinalExamEvent1"
 
@@ -46,8 +48,11 @@ class EndEvent1(context: Context) : Event(context) {
         }else{
             textContent0.add(Word("Dr. Boutell", "Not bad. But I believe you can do better!"))
         }
+        textContent0.add(Word("Dr. Boutell", "Have a nice break and see you next term!"))
+        textContent0.add(Word("", "Go to next term?"))
 
-
+        textContent0.add(choice1)
+        textContent0.add(choice2)
 
         ite0 = textContent0.iterator()
         ite1 = textContent1.iterator()
@@ -59,5 +64,15 @@ class EndEvent1(context: Context) : Event(context) {
 
     override fun makeChoice(c: Int) {
         state = c
+        if(c == 1){
+            sta.Week = 1
+            sta.Day = 1
+        }else{
+            sta.Week = 1
+            sta.Day = 1
+            Toast.makeText(context!!,"Game state saved, see your next time." , Toast.LENGTH_SHORT).show()
+            con.chooseExit()
+
+        }
     }
 }

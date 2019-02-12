@@ -43,8 +43,11 @@ import java.util.*
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
     fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener,Status.IgetStatus {
+    override fun chooseExit() {
+        save()
+        finish()
 
-
+    }
 
 
     override fun setStatus(s: Status) {
@@ -60,6 +63,8 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
 
     override fun onFragmentInteraction(uri: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.d(Constants.TAG, "in main -> onFragmentInteraction")
+        onBackPressed()
     }
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -258,17 +263,29 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
 
     }
 
+    fun save(){
+        
+
+
+        val user = auth.currentUser
+        this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+        saveLoadFragment!!.listener = this
+        var saveloadFT = supportFragmentManager.beginTransaction()
+        saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
+        saveloadFT.addToBackStack("list")
+        saveloadFT.commit()
+        Toast.makeText(this,
+            "game saved",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_share ->{
-                takeScreenshot()
-                share(sharePath)
 
-                true
-            }
             R.id.action_settings -> {
                 var builder = AlertDialog.Builder(this)
                 var view = LayoutInflater.from(this).inflate(R.layout.menudialog,null,false)
@@ -286,13 +303,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
             }
 
             R.id.action_save -> {
-                val user = auth.currentUser
-                this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
-                saveLoadFragment!!.listener = this
-                var saveloadFT = supportFragmentManager.beginTransaction()
-                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
-                saveloadFT.addToBackStack("list")
-                saveloadFT.commit()
+                save()
                 true
             }
 
@@ -326,6 +337,12 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
                 }else{
                     Toast.makeText(this,"You have to Login!",Toast.LENGTH_SHORT).show()
                 }
+
+                true
+            }
+            R.id.action_share ->{
+                takeScreenshot()
+                share(sharePath)
 
                 true
             }

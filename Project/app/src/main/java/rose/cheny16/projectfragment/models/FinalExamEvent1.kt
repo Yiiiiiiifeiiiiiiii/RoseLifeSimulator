@@ -55,10 +55,9 @@ class FinalExamEvent1(context: Context) : Event(context) {
         val df = DecimalFormat("#.###")
         state = c
         if(c == 1){
-            sta.GPA = "%.2f".format((sta.GPA +  (4 - sta.GPA)/4 )).toFloat()
-            sta.happiness = sta.happiness + 5
+            sta.GPA = "%.2f".format((sta.GPA +  (4 - sta.GPA)/5 )).toFloat()
         }else{
-            sta.GPA = "%.2f".format((sta.GPA +  (3 - sta.GPA)/4 )).toFloat()
+            sta.GPA = "%.2f".format((sta.GPA +  (3 - sta.GPA)/5 )).toFloat()
         }
     }
 }
