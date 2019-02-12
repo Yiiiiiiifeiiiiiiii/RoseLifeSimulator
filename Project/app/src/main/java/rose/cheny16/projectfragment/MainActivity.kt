@@ -21,10 +21,23 @@ import android.media.AudioManager
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.content.Context.AUDIO_SERVICE
-
-
-
-
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Environment
+import com.google.common.io.Flushables.flush
+import android.os.Environment.getExternalStorageDirectory
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.FileProvider
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
 
 
 //class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt{
@@ -48,13 +61,32 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     override fun onFragmentInteraction(uri: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        when (requestCode) {
+            WRITE_EXTERNAL_STORAGE_PERMISSION -> {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted
+                    Log.d(Constants.TAG, "Permission granted")
+                } else {
+                    // permission denied
+                }
+                return
+            }
+        }
+    }
 
     private val RC_SIGN_IN = 1
+    private val WRITE_EXTERNAL_STORAGE_PERMISSION = 2
     lateinit var authListener: FirebaseAuth.AuthStateListener
     val auth = FirebaseAuth.getInstance()
     var saveLoadFragment: fragment_saveload? = null
     var player = Status()
     private var audioManager: AudioManager? = null
+    private var sharePath = "no"
 
 
     override fun getFt(): FragmentTransaction {
@@ -113,10 +145,12 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         initializeListeners()
+        checkPermissions()
 
 
 
@@ -152,6 +186,22 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         }
 
     }
+    private fun checkPermissions() {
+        // Check to see if we already have permissions
+        if (ContextCompat
+                .checkSelfPermission(
+                    this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // If we do not, request them from the user
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                WRITE_EXTERNAL_STORAGE_PERMISSION
+            )
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -159,11 +209,66 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
         return true
     }
 
+    private fun takeScreenshot() {
+        val now = Date()
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now)
+
+        try {
+            // image naming and path  to include sd card  appending name you choose for file
+            val mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpeg"
+
+            // create bitmap screen capture
+            val v1 = window.decorView.rootView
+            v1.isDrawingCacheEnabled = true
+            val bitmap = Bitmap.createBitmap(v1.drawingCache)
+            v1.isDrawingCacheEnabled = false
+
+            val imageFile = File(mPath)
+
+            val outputStream = FileOutputStream(imageFile)
+            val quality = 100
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
+            outputStream.flush()
+            outputStream.close()
+
+            //setting screenshot in imageview
+            val filePath = imageFile.getPath()
+
+            Log.d("fffff",filePath)
+            sharePath = filePath
+
+        } catch (e: Throwable) {
+            Log.d("fffff",e.message)
+            // Several error may come out with file handling or DOM
+            e.printStackTrace()
+        }
+
+    }
+
+    private fun share(sharePath: String) {
+
+        Log.d("ffff", sharePath)
+        val file = File(sharePath)
+        val uri = FileProvider.getUriForFile(this,
+            "rose.cheny16.projectfragment", file)
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "image/*"
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+        startActivity(intent)
+
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.action_share ->{
+                takeScreenshot()
+                share(sharePath)
+
+                true
+            }
             R.id.action_settings -> {
                 var builder = AlertDialog.Builder(this)
                 var view = LayoutInflater.from(this).inflate(R.layout.menudialog,null,false)
@@ -179,6 +284,7 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
                 builder.show()
                 true
             }
+
             R.id.action_save -> {
                 val user = auth.currentUser
                 this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
