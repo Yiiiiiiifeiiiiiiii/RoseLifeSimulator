@@ -50,15 +50,17 @@ class fragment_saveload : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.list_view,container,false) as RecyclerView
         adapter = SaveLoadAdapter(context!!, context as fragment_saveload.OnFragmentInteractionListener?, uid!!)
-        adapter!!.addSnapshotListener()
+
+        adapter!!.addSnapshotListener(param2!!)
+
         view.layoutManager = LinearLayoutManager(context)
         var lm = view.layoutManager
         view.setHasFixedSize(true)
         view.adapter=adapter
+
         var callback = ItemSwipeCallback(adapter!!)
         var ith = ItemTouchHelper(callback)
         ith.attachToRecyclerView(view)
-
 
 
 

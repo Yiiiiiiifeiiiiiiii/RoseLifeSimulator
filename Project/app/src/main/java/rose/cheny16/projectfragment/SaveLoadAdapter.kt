@@ -36,7 +36,7 @@ class SaveLoadAdapter(val context: Context,val listener: fragment_saveload.OnFra
         p0.bind(statuss[p1])
     }
 
-    fun addSnapshotListener(){
+    fun addSnapshotListener(pram: String){
         listenerRegistration = statusRef1
             .addSnapshotListener { querySnapshot, e ->
             if(e != null){
@@ -47,8 +47,8 @@ class SaveLoadAdapter(val context: Context,val listener: fragment_saveload.OnFra
         }
         var con = context as Status.IgetStatus
 
-
-        statusRef1.add(con.getStatus())
+        if(pram.equals(""))
+            statusRef1.add(con.getStatus())
     }
 
     fun processSnapshotChanges(querySnapshot: QuerySnapshot) {

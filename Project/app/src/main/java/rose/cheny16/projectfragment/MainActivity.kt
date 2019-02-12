@@ -21,6 +21,7 @@ import android.media.AudioManager
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.content.Context.AUDIO_SERVICE
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -264,20 +265,43 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
     }
 
     fun save(){
-        
 
 
-        val user = auth.currentUser
-        this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
-        saveLoadFragment!!.listener = this
-        var saveloadFT = supportFragmentManager.beginTransaction()
-        saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
-        saveloadFT.addToBackStack("list")
-        saveloadFT.commit()
-        Toast.makeText(this,
-            "game saved",
-            Toast.LENGTH_LONG
-        ).show()
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Save current game state? \nNew save slot will appear on top").setPositiveButton("Yes", dialogClickListener)
+            .setNegativeButton("No", dialogClickListener).show()
+
+    }
+
+    val dialogClickListener = DialogInterface.OnClickListener { dialogInterface, i ->
+        when (i){
+
+            DialogInterface.BUTTON_POSITIVE -> {
+                val user = auth.currentUser
+                this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+                saveLoadFragment!!.listener = this
+                var saveloadFT = supportFragmentManager.beginTransaction()
+                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
+                saveloadFT.addToBackStack("list")
+                saveloadFT.commit()
+                Toast.makeText(this,
+                    "game saved",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            DialogInterface.BUTTON_NEGATIVE -> {
+                val user = auth.currentUser
+                this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "l")
+                saveLoadFragment!!.listener = this
+                var saveloadFT = supportFragmentManager.beginTransaction()
+                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
+                saveloadFT.addToBackStack("list")
+                saveloadFT.commit()
+            }
+
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
