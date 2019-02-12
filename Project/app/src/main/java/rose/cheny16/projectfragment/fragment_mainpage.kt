@@ -74,16 +74,39 @@ class fragment_mainpage : Fragment() {
         view.currentGPAtitle.text = getString(R.string.gpa_format, sta.GPA)
         view.nameTexgtView.text = getString(R.string.name_format, sta.name)
 
+
         view.nextDay_button.setOnClickListener {
             sta.Day += 1
             if(sta.Day==8){
                 sta.Day =1
                 sta.Week += 1
             }
-            if(sta.Week >= 10){
+            val rnds = (0..10).random() //[0,9]
+
+            if(rnds == 1) {
+                Toast.makeText(context,"Wait a minute!", Toast.LENGTH_SHORT).show()
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("RandomEvent1"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }else if(rnds == 2)  {
+                Toast.makeText(context,"Bob comes to your dorm", Toast.LENGTH_SHORT).show()
+                ft.replace(R.id.fragment_container,fragment_story.newInstance("RandomEvent2"),"detail")
+                ft.addToBackStack("list")
+                ft.commit()
+            }
+
+            if(sta.Week >= 11){
                 // TODO: go to end
                 Toast.makeText(context,"Final Exam time!", Toast.LENGTH_SHORT).show()
-                ft.replace(R.id.fragment_container,fragment_story.newInstance("FinalExamEvent1"),"detail")
+
+                val rnds2 = (0..1).random() //[0,1]
+                if(rnds2 == 0){
+                    ft.replace(R.id.fragment_container,fragment_story.newInstance("FinalExamEvent1"),"detail")
+                }
+                else{
+                    ft.replace(R.id.fragment_container,fragment_story.newInstance("FinalExamEvent2"),"detail")
+                }
+                //ft.replace(R.id.fragment_container,fragment_story.newInstance("FinalExamEvent1"),"detail")
                 ft.addToBackStack("list")
                 ft.commit()
 

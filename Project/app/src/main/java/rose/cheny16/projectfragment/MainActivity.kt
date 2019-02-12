@@ -45,7 +45,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_login.IgetFt,
     fragment_login.onLoginButtonPressedListener,fragment_saveload.OnFragmentInteractionListener,Status.IgetStatus {
     override fun chooseExit() {
-        save()
+        directSave()
         finish()
 
     }
@@ -268,26 +268,30 @@ class MainActivity : AppCompatActivity(), fragment_mainpage.IgetFt, fragment_log
 
 
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Save current game state? \nNew save slot will appear on top").setPositiveButton("Yes", dialogClickListener)
+        builder.setMessage("Save current game state? \nNew save slot will appear on top")
+            .setPositiveButton("Yes", dialogClickListener)
             .setNegativeButton("No", dialogClickListener).show()
 
+    }
+    fun directSave(){
+        val user = auth.currentUser
+        this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
+        saveLoadFragment!!.listener = this
+        var saveloadFT = supportFragmentManager.beginTransaction()
+        saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
+        saveloadFT.addToBackStack("list")
+        saveloadFT.commit()
+        Toast.makeText(this,
+            "game saved",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     val dialogClickListener = DialogInterface.OnClickListener { dialogInterface, i ->
         when (i){
 
             DialogInterface.BUTTON_POSITIVE -> {
-                val user = auth.currentUser
-                this.saveLoadFragment = fragment_saveload.newInstance(user!!.uid, "")
-                saveLoadFragment!!.listener = this
-                var saveloadFT = supportFragmentManager.beginTransaction()
-                saveloadFT.replace(R.id.fragment_container,saveLoadFragment,"login")
-                saveloadFT.addToBackStack("list")
-                saveloadFT.commit()
-                Toast.makeText(this,
-                    "game saved",
-                    Toast.LENGTH_LONG
-                ).show()
+                directSave()
             }
 
             DialogInterface.BUTTON_NEGATIVE -> {

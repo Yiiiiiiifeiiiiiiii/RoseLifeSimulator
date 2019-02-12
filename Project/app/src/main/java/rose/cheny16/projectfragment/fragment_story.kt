@@ -80,6 +80,8 @@ class fragment_story : Fragment() {
             e = CHEM111event2(context!!)
         }else if(param1.equals("FinalExamEvent1")){
             e = FinalExamEvent1(context!!)
+        }else if(param1.equals("FinalExamEvent2")){
+            e = FinalExamEvent2(context!!)
         }else if(param1.equals("EndEvent1")){
             e = EndEvent1(context!!)
         }else if(param1.equals("JP111event1")){
@@ -90,6 +92,10 @@ class fragment_story : Fragment() {
             e = CSSE120event1(context!!)
         }else if(param1.equals("CSSE120event2")){
             e = CSSE120event2(context!!)
+        }else if(param1.equals("RandomEvent1")){
+            e = RandomEvent1(context!!)
+        }else if(param1.equals("RandomEvent2")){
+            e = RandomEvent2(context!!)
         }
         view.imageView.setImageResource(e.place)
 
@@ -134,7 +140,7 @@ class fragment_story : Fragment() {
                         view.head.setImageResource(Util.npcToDrawable.get(w.speaker)!!)
                 }
 
-            }else if(param1.equals("FinalExamEvent1")){
+            }else if(param1.equals("FinalExamEvent1") || param1.equals("FinalExamEvent2")  ){
                 var con = context as fragment_mainpage.IgetFt
                 var ft = con.getFt()
                 ft.replace(R.id.fragment_container,fragment_story.newInstance("EndEvent1"),"detail")

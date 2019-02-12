@@ -14,13 +14,13 @@
             android:adjustViewBounds="true"/>
 
     <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="69dp"
+            android:layout_height="93dp"
             android:scaleType="centerCrop"
             android:id="@+id/head"
             android:adjustViewBounds="true" android:layout_alignParentRight="true"
-            android:layout_above="@+id/next_button" android:layout_alignParentEnd="true" android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp" android:layout_marginBottom="73dp"/>
+            android:layout_above="@+id/next_button" android:layout_alignParentEnd="true" android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp" android:layout_marginBottom="93dp"/>
     <Button
             android:text="Next"
             android:layout_width="wrap_content"
@@ -72,8 +72,8 @@
               android:textStyle="bold"
               android:layout_centerHorizontal="true"
               android:layout_above="@id/choice2"
-
-              android:layout_margin="10sp"
+              android:layout_marginTop="20sp"
+              android:layout_margin="5sp"
 
     />
     <TextView android:layout_width="wrap_content"
@@ -92,6 +92,6 @@
               android:textSize="20sp"
               android:id="@+id/choice3"
               android:layout_above="@id/next_button"
-              android:layout_margin="10sp"
+              android:layout_marginTop="5sp"
     />
 </RelativeLayout>
